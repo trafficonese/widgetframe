@@ -1,0 +1,16 @@
+Package: widgetframe
+Type: Package
+Title: Embeds External URL in Responsive IFRAME.
+Version: 0.1.0
+Authors@R: c(
+    person("Bhaskar", "Karambelkar", email = "bhaskarvk@gmail.com", role = c("aut", "cre"))
+    )
+Description:  Embeds External URL in Responsive IFRAME.
+    Based on http://blog.apps.npr.org/pym.js/
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports:
+    htmlwidgets,
+    htmltools
+RoxygenNote: 5.0.1
