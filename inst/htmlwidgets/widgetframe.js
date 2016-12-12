@@ -9,14 +9,11 @@ HTMLWidgets.widget({
     return {
 
       renderValue: function(x) {
-
-         var pymParent = new pym.Parent(el.id, x.url, {});
-
+         HTMLWidgets.pymParent = new pym.Parent(el.id, x.url,
+          x.options || {});
       },
 
       resize: function(width, height) {
-
-        // TODO: code to re-render the widget with a new size
 
       }
 

@@ -1,0 +1,27 @@
+---
+title: "Demo of widgetframe knitting"
+author: "Bhaskar V. Karambelkar"
+date: "12/13/2016"
+output: 
+  html_document: 
+    self_contained: no
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## widgetframe
+
+```{r 01}
+library(leaflet)
+library(widgetframe)
+l <- leaflet(height=300) %>% addTiles() %>% setView(0,0,1)
+frameWidget(l)
+```
+
+```{r 02}
+library(dygraphs)
+ts <- dygraph(nhtemp, main = "New Haven Temperatures", height=250, width='95%')
+frameWidget(ts)
+```

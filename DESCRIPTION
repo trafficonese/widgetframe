@@ -1,18 +1,30 @@
 Package: widgetframe
 Type: Package
-Title: Embeds External URL in Responsive IFRAME.
+Title: Package for Wrapping Htmlwidgets in Responsive Iframes
 Version: 0.1.0
 Authors@R: c(
     person("Bhaskar", "Karambelkar", email = "bhaskarvk@gmail.com", role = c("aut", "cre"))
     )
-Description: Embeds External URL in Responsive IFRAME.
-    Based on http://blog.apps.npr.org/pym.js/
+Description: This pacakge provides two functions `frameableWidget`, and `frameWidget`.
+  The `frameableWidget` is used to add extra code to a htmlwidget which
+  allows is to be rendered inside a responsive iframe.
+  The `frameWidget` is a htmlwidget which displays content of another htmlwidget
+  inside a responsive iframe.
+  These functions allow for easier embedding of htmlwidgets in CMS systems
+  such as wordpress, blogger etc.
+  They also allow for seperation of widget content from main HTML content.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Imports:
+Depends:
+    R (>= 3.1.0),
     htmlwidgets,
-    htmltools
+Imports:
+    htmltools,
+    purrr,
+    magrittr,
+    stringr,
+    utils
 RoxygenNote: 5.0.1
 URL: https://github.com/bhaskarvk/widgetframe
 BugReports: https://github.com/bhaskarvk/widgetframe/issues
