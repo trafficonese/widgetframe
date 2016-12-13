@@ -5,6 +5,9 @@ knit_print.widgetframe <- function(x, ..., options = NULL) {
 
   outputDir <- getwd()
 
+  # TODO everytime this widget is knitted, a new directory is created
+  # for the child widget, find a way to create a unique directory but reuse
+  # existing one if available.
   childDir <- tempfile('widget_', outputDir)
   dir.create(childDir)
   setwd(childDir)
@@ -20,7 +23,7 @@ knit_print.widgetframe <- function(x, ..., options = NULL) {
 }
 
 # Register the knitr_print.widgetframe as a Method of the knit_print generic.
-# Shamelessly copied from htmlwidgets code.
+# Shamelessly copied from htmlwidget code.
 .onLoad <- function(...) {
   pkg <- 'knitr'
   generic <- 'knit_print'
