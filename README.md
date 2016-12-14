@@ -10,6 +10,9 @@ This package provides two functions `frameableWidget`, and `frameWidget`. The `f
 
 [![Project Status: Active – The project is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active) [![Last-changedate](https://img.shields.io/badge/last%20change-2016--12--13-yellowgreen.svg)](/commits/master)
 
+- Currently doesn't work inside a shiny env.
+- Not heavily tested for bookdown / R Markdown site.
+
 #### Build Status
 
 [![Travis-CI Build Status](https://travis-ci.org/bhaskarvk/widgetframe.svg?branch=master)](https://travis-ci.org/bhaskarvk/widgetframe) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/bhaskarvk/widgetframe?branch=master&svg=true)](https://ci.appveyor.com/project/bhaskarvk/widgetframe)

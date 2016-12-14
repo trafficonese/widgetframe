@@ -7,21 +7,27 @@ knit_print.widgetframe <- function(x, ..., options = NULL) {
 
   # Use the chunk label if available for placing the enclosed widget's HTML
   if(!is.null(options) && !is.null(options$label)) {
-    childDir <- file.path('widgets',options$label)
+    childFile <- paste0(options$label,'.html')
   } else {
-    childDir <- tempfile('widget_', file.path(outputDir,'widgets'))
+    childFile <- paste0(basename(tempfile('widget_', '.')),'.html')
   }
-  if(dir.exists(childDir)) {
-    unlink(childDir, recursive = TRUE, force = TRUE)
-  }
-  dir.create(childDir,recursive = TRUE)
+
+  childDir <- file.path(outputDir,'widgets')
+  dir.create(childDir,recursive = TRUE, showWarnings = FALSE)
   setwd(childDir)
-  htmlwidgets::saveWidget(childWidget, 'index.html',
+
+  if(file.exists(childFile)) {
+    unlink(childFile, force = TRUE)
+  }
+  # For now the child widget is selfcontained, i.e. one big HTML with JS/CSS as data URIs.
+  # TODO figure out if we can read self_contained argument of the Rmd file and
+  # change behavior accordingly.
+  htmlwidgets::saveWidget(childWidget, childFile, libdir = 'libs',
                           knitrOptions = options)
   setwd(outputDir)
 
   # Set the relative URL for child HTML
-  x$x$url <- file.path('widgets',basename(childDir),'index.html')
+  x$x$url <- paste(basename(childDir),childFile, sep='/')
 
   # Knit parent widget
   NextMethod()
