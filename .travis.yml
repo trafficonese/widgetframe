@@ -4,10 +4,3 @@ language: R
 sudo: required
 cache: packages
 dist: trusty
-r_binary_packages:
-  - htmlwidgets
-  - htmltools
-  - purrr
-  - magrittr
-  - stringr
-  - utils

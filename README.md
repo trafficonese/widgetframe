@@ -2,7 +2,7 @@
 
 The goal of widgetframe is to be able to embed widgets inside iframes using NPR's [Pymjs](http://blog.apps.npr.org/pym.js/) library for responsive iframes.
 
-This pacakge provides two functions `frameableWidget`, and `frameWidget`. The `frameableWidget` is used to add extra code to a htmlwidget which allows is to be rendered inside a responsive iframe. The `frameWidget` returns a htmlwidget which displays content of another htmlwidget inside a responsive iframe. 
+This package provides two functions `frameableWidget`, and `frameWidget`. The `frameableWidget` is used to add extra code to a htmlwidget which allows is to be rendered inside a responsive iframe. The `frameWidget` returns a htmlwidget which displays content of another htmlwidget inside a responsive iframe. 
 
 ### Information
 
@@ -19,7 +19,7 @@ This pacakge provides two functions `frameableWidget`, and `frameWidget`. The `f
 
 #### `frameableWidget` function.
 
-The `frameableWidget` function should be used when you need a HTML which can be embedded in a CMS system like wordpress/blogger or a static HTML website using the [Pymjs](http://blog.apps.npr.org/pym.js/) library.
+The `frameableWidget` function should be used when you need a HTML which can be embedded in a CMS system like WordPress/blogger or a static HTML website using the [Pymjs](http://blog.apps.npr.org/pym.js/) library.
 
 ```r
 library(leaflet)
@@ -28,7 +28,7 @@ l <- leaflet() %>% addTiles()
 htmlwidgets::saveWidget(frameableWidget(l),'leaflet.html')
 ```
 
-The resulting leaflet.html contains the necessary Pym.js Child initialization code and will work inside a regular iFrame or better yet a Pym.js responsive iFrame. It is expected that the site which is going to embed this widget's contnet has the necessary Pymjs Parent initialization code as described [here](http://blog.apps.npr.org/pym.js/).
+The resulting leaflet.html contains the necessary Pym.js Child initialization code and will work inside a regular iFrame or better yet a Pym.js responsive iFrame. It is expected that the site which is going to embed this widget's content has the necessary Pymjs Parent initialization code as described [here](http://blog.apps.npr.org/pym.js/).
 
 #### `frameWidget` function
 
