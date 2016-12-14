@@ -4,24 +4,28 @@ author: "Bhaskar V. Karambelkar"
 date: "12/13/2016"
 output: 
   html_document: 
-    self_contained: no
+    self_contained: yes
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## widgetframe
+## Widgets in iFrames
 
-```{r 01}
+### Leaflet
+
+```{r leaflet-01}
 library(leaflet)
 library(widgetframe)
-l <- leaflet(height=300) %>% addTiles() %>% setView(0,0,1)
+l <- leaflet(height=400) %>% addTiles() %>% setView(0,0,2)
 frameWidget(l)
 ```
 
-```{r 02}
+### Dygraph
+
+```{r dygraph-01}
 library(dygraphs)
-ts <- dygraph(nhtemp, main = "New Haven Temperatures", height=250, width='95%')
+ts <- dygraph(nhtemp, main = "New Haven Temperatures", height=350, width='95%')
 frameWidget(ts)
 ```

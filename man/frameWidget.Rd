@@ -4,14 +4,17 @@
 \alias{frameWidget}
 \title{A widget that wraps another widget inside a responsive iframe.}
 \usage{
-frameWidget(targetWidget, width = "100\%", elementId = NULL,
-  options = frameOptions())
+frameWidget(targetWidget, width = "100\%", height = NULL,
+  elementId = NULL, options = frameOptions())
 }
 \arguments{
 \item{targetWidget}{The widget to embed inside an iframe.}
 
 \item{width}{Defaults to 100%. You can either specify '10%', '50%' etc. or
-100, 200 (in pixel).}
+100, 200 (in pixel). This will override the width of the enclosed widget.}
+
+\item{height}{Defaults to NULL. You can either specify '10%', '50%' etc. or
+100, 200 (in pixel). This will override the height of the enclosed widget.}
 
 \item{elementId}{The element ID of the parent widget.}
 

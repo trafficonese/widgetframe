@@ -5,18 +5,23 @@ knit_print.widgetframe <- function(x, ..., options = NULL) {
 
   outputDir <- getwd()
 
-  # TODO everytime this widget is knitted, a new directory is created
-  # for the child widget, find a way to create a unique directory but reuse
-  # existing one if available.
-  childDir <- tempfile('widget_', outputDir)
-  dir.create(childDir)
+  # Use the chunk label if available for placing the enclosed widget's HTML
+  if(!is.null(options) && !is.null(options$label)) {
+    childDir <- file.path('widgets',options$label)
+  } else {
+    childDir <- tempfile('widget_', file.path(outputDir,'widgets'))
+  }
+  if(dir.exists(childDir)) {
+    unlink(childDir, recursive = TRUE, force = TRUE)
+  }
+  dir.create(childDir,recursive = TRUE)
   setwd(childDir)
   htmlwidgets::saveWidget(childWidget, 'index.html',
                           knitrOptions = options)
   setwd(outputDir)
 
   # Set the relative URL for child HTML
-  x$x$url <- file.path('.',basename(childDir),'index.html')
+  x$x$url <- file.path('widgets',basename(childDir),'index.html')
 
   # Knit parent widget
   NextMethod()

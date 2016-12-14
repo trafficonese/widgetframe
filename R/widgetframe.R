@@ -56,7 +56,10 @@ frameOptions <- function(xdomain = '*', title=NULL, name=NULL,
 #' @export
 frameableWidget <- function(widget, renderCallback = NULL) {
   if(!("htmlwidget" %in% class(widget))) {
-    stop ("the input widget argument is not an actual htmldidget")
+    stop ("The input widget argument is not a htmldidget.")
+  }
+  if("widgetframe" %in% class(widget)) {
+    stop ("Can't make an already framed widget frameable.")
   }
 
   # is it already frameable
@@ -102,7 +105,9 @@ frameableWidget <- function(widget, renderCallback = NULL) {
 #'
 #' @param targetWidget The widget to embed inside an iframe.
 #' @param width Defaults to 100%. You can either specify '10%', '50%' etc. or
-#'  100, 200 (in pixel).
+#'  100, 200 (in pixel). This will override the width of the enclosed widget.
+#' @param height Defaults to NULL. You can either specify '10%', '50%' etc. or
+#'  100, 200 (in pixel). This will override the height of the enclosed widget.
 #' @param elementId The element ID of the parent widget.
 #' @param options Options for the iframe.
 #'
@@ -114,29 +119,46 @@ frameableWidget <- function(widget, renderCallback = NULL) {
 #'
 #' @seealso \code{\link{frameOptions}()}.
 #' @export
-frameWidget <- function(targetWidget, width = '100%', elementId = NULL,
+frameWidget <- function(targetWidget, width = '100%', height = NULL, elementId = NULL,
                         options = frameOptions()) {
 
+  # Safety check for accidental frameWidget(frameWidget(someWidget))
+  if('widgetframe' %in% class(targetWidget)) {
+    warning("Re framing an already framed widget with new params")
+    targetWidget <- attr(targetWidget$x,'widget')
+  }
+
   ## Add Pym.js init code to the target widget if not already done so.
-  widget <- NULL
-  if('frameablewidget' %in% class(targetWidget)) {
-    widget <- targetWidget
+  targetWidget <- frameableWidget(targetWidget)
+
+  # Override targetWidget's width/height by this widget's width/height if provided.
+  if(!is.null(width)) {
+    targetWidget$width <- width
   } else {
-    widget <- frameableWidget(targetWidget)
+    if(!is.null(targetWidget$width)) {
+      width <- targetWidget$width
+    }
+  }
+  if(!is.null(height)) {
+    targetWidget$height <- height
+  } else {
+    if(!is.null(targetWidget$height)) {
+      height <- targetWidget$height
+    }
   }
 
   widgetData = structure(
     list(
-      url = 'about:blank', # this will be overwritten in the print.widgetframe function.
+      url = 'about:blank', # this will be overwritten when the widget is rendered
       options = options
-    ), widget = widget )
+    ), widget = targetWidget )
 
   # create widget
   htmlwidgets::createWidget(
     name = 'widgetframe',
     x = widgetData,
     width = width,
-    height = targetWidget$height, # Use target widget's height if provided
+    height = height,
     package = 'widgetframe',
     elementId = elementId
   )
@@ -154,6 +176,7 @@ print.widgetframe <- function(x, ..., view = interactive()) {
 
   childWidget <- attr(x$x,'widget')
 
+  # This is just an extra safety check, there is no reason why the childWidget should be null.
   if(!is.null(childWidget)) {
 
     childDir <- file.path(parentDir,'widget')
@@ -168,11 +191,8 @@ print.widgetframe <- function(x, ..., view = interactive()) {
     x$x$url <- './widget/index.html'
   }
 
-  # The parentHTML is saved after child HTML because ...
-  # parent needs to know the path to the child HTML
-
-  parentHTML <- file.path(parentDir,'index.html')
   # Save parent widget's HTML
+  parentHTML <- file.path(parentDir,'index.html')
   htmltools::save_html(
     htmltools::as.tags(x, standalone=TRUE), file = parentHTML)
 
@@ -183,13 +203,13 @@ print.widgetframe <- function(x, ..., view = interactive()) {
   invisible(x)
 }
 
-#' Save a widgetframe and its child widget to HTML files
+#' Save a widgetframe and its child widget to HTML files.
 #'
-#' Save a rendered widgetframe and its child widget to HTML files.
+#' @description Similar to \code{\link[htmlwidgets]{saveWidget}()} with the addition that both the parent widget and the enclosed child widget are saved to two different HTML files.
 #'
 #' @param widget widgetframe to save
-#' @param file File to save  the parent HTML into. The child HTML will be saved to `basename(file)_widget/index.html`.
-#' @param selfcontained Whether to save the parent and child HTML as a single self-contained files.
+#' @param file File to save  the parent widget into. The child widget will be saved to `basename(file)_widget/index.html`.
+#' @param selfcontained Whether to save the parent and child HTMLs as a single self-contained files. WARNING: Setting this option to true will still result in two HTMLs, one for the parent and another for the child widget.
 #'   (with external resources base64 encoded) or files with external resources
 #'   placed in an adjacent directory.
 #' @param libdir Directory to copy HTML dependencies into (defaults to

@@ -2,7 +2,7 @@
 % Please edit documentation in R/widgetframe.R
 \name{saveWidgetframe}
 \alias{saveWidgetframe}
-\title{Save a widgetframe and its child widget to HTML files}
+\title{Save a widgetframe and its child widget to HTML files.}
 \usage{
 saveWidgetframe(widget, file, selfcontained = FALSE, libdir = NULL,
   background = "white", knitrOptions = list())
@@ -10,9 +10,9 @@ saveWidgetframe(widget, file, selfcontained = FALSE, libdir = NULL,
 \arguments{
 \item{widget}{widgetframe to save}
 
-\item{file}{File to save  the parent HTML into. The child HTML will be saved to `basename(file)_widget/index.html`.}
+\item{file}{File to save  the parent widget into. The child widget will be saved to `basename(file)_widget/index.html`.}
 
-\item{selfcontained}{Whether to save the parent and child HTML as a single self-contained files.
+\item{selfcontained}{Whether to save the parent and child HTMLs as a single self-contained files. WARNING: Setting this option to true will still result in two HTMLs, one for the parent and another for the child widget.
 (with external resources base64 encoded) or files with external resources
 placed in an adjacent directory.}
 
@@ -25,6 +25,6 @@ Defaults to white.}
 \item{knitrOptions}{A list of \pkg{knitr} chunk options.}
 }
 \description{
-Save a rendered widgetframe and its child widget to HTML files.
+Similar to \code{\link[htmlwidgets]{saveWidget}()} with the addition that both the parent widget and the enclosed child widget are saved to two different HTML files.
 }
 
