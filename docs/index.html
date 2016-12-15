@@ -55,13 +55,18 @@
 
 <p>The goal of widgetframe is to be able to embed widgets inside iframes using NPR&#39;s <a href="http://blog.apps.npr.org/pym.js/">Pymjs</a> library for responsive iframes.</p>
 
-<p>This pacakge provides two functions <code>frameableWidget</code>, and <code>frameWidget</code>. The <code>frameableWidget</code> is used to add extra code to a htmlwidget which allows is to be rendered inside a responsive iframe. The <code>frameWidget</code> returns a htmlwidget which displays content of another htmlwidget inside a responsive iframe. </p>
+<p>This package provides two functions <code>frameableWidget</code>, and <code>frameWidget</code>. The <code>frameableWidget</code> is used to add extra code to a htmlwidget which allows is to be rendered inside a responsive iframe. The <code>frameWidget</code> returns a htmlwidget which displays content of another htmlwidget inside a responsive iframe. </p>
 
 <h3>Information</h3>
 
 <h4>Project Status</h4>
 
 <p><a href="http://www.repostatus.org/#active"><img src="http://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active – The project is being actively developed."/></a> <a href="/commits/master"><img src="https://img.shields.io/badge/last%20change-2016--12--13-yellowgreen.svg" alt="Last-changedate"/></a></p>
+
+<ul>
+<li>Currently doesn&#39;t work inside a shiny env.</li>
+<li>Not heavily tested for bookdown / R Markdown site.</li>
+</ul>
 
 <h4>Build Status</h4>
 
@@ -71,7 +76,7 @@
 
 <h4><code>frameableWidget</code> function.</h4>
 
-<p>The <code>frameableWidget</code> function should be used when you need a HTML which can be embedded in a CMS system like wordpress/blogger or a static HTML website using the <a href="http://blog.apps.npr.org/pym.js/">Pymjs</a> library.</p>
+<p>The <code>frameableWidget</code> function should be used when you need a HTML which can be embedded in a CMS system like WordPress/blogger or a static HTML website using the <a href="http://blog.apps.npr.org/pym.js/">Pymjs</a> library.</p>
 
 <pre><code class="r">library(leaflet)
 library(widgetframe)
@@ -79,7 +84,7 @@ l &lt;- leaflet() %&gt;% addTiles()
 htmlwidgets::saveWidget(frameableWidget(l),&#39;leaflet.html&#39;)
 </code></pre>
 
-<p>The resulting leaflet.html contains the necessary Pym.js Child initialization code and will work inside a regular iFrame or better yet a Pym.js responsive iFrame. It is expected that the site which is going to embed this widget&#39;s contnet has the necessary Pymjs Parent initialization code as described <a href="http://blog.apps.npr.org/pym.js/">here</a>.</p>
+<p>The resulting leaflet.html contains the necessary Pym.js Child initialization code and will work inside a regular iFrame or better yet a Pym.js responsive iFrame. It is expected that the site which is going to embed this widget&#39;s content has the necessary Pymjs Parent initialization code as described <a href="http://blog.apps.npr.org/pym.js/">here</a>.</p>
 
 <h4><code>frameWidget</code> function</h4>
 

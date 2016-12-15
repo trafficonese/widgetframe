@@ -54,8 +54,8 @@
 <div class="row">
   <div class="span8">
     <h2>Usage</h2>
-    <pre><span class="functioncall"><a href='frameWidget.html'>frameWidget</a></span><span class="keyword">(</span><span class="symbol">targetWidget</span><span class="keyword">,</span> <span class="argument">width</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">"100%"</span><span class="keyword">,</span> <span class="argument">elementId</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span>
-  <span class="argument">options</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="functioncall"><a href='frameOptions.html'>frameOptions</a></span><span class="keyword">(</span><span class="keyword">)</span><span class="keyword">)</span></pre>
+    <pre><span class="functioncall"><a href='frameWidget.html'>frameWidget</a></span><span class="keyword">(</span><span class="symbol">targetWidget</span><span class="keyword">,</span> <span class="argument">width</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">"100%"</span><span class="keyword">,</span> <span class="argument">height</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span>
+  <span class="argument">elementId</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span> <span class="argument">options</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="functioncall"><a href='frameOptions.html'>frameOptions</a></span><span class="keyword">(</span><span class="keyword">)</span><span class="keyword">)</span></pre>
     
     <h2>Arguments</h2>
     <dl>
@@ -63,7 +63,10 @@
       <dd>The widget to embed inside an iframe.</dd>
       <dt>width</dt>
       <dd>Defaults to 100
-100, 200 (in pixel).</dd>
+100, 200 (in pixel). This will override the width of the enclosed widget.</dd>
+      <dt>height</dt>
+      <dd>Defaults to NULL. You can either specify &#39;10
+100, 200 (in pixel). This will override the height of the enclosed widget.</dd>
       <dt>elementId</dt>
       <dd>The element ID of the parent widget.</dd>
       <dt>options</dt>

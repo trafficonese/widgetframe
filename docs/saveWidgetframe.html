@@ -49,7 +49,7 @@
         
       </header>
       
-      <h1>Save a widgetframe and its child widget to HTML files</h1>
+      <h1>Save a widgetframe and its child widget to HTML files.</h1>
 
 <div class="row">
   <div class="span8">
@@ -62,9 +62,9 @@
       <dt>widget</dt>
       <dd>widgetframe to save</dd>
       <dt>file</dt>
-      <dd>File to save  the parent HTML into. The child HTML will be saved to `basename(file)_widget/index.html`.</dd>
+      <dd>File to save  the parent widget into. The child widget will be saved to `basename(file)_widget/index.html`.</dd>
       <dt>selfcontained</dt>
-      <dd>Whether to save the parent and child HTML as a single self-contained files.
+      <dd>Whether to save the parent and child HTMLs as a single self-contained files. WARNING: Setting this option to true will still result in two HTMLs, one for the parent and another for the child widget.
 (with external resources base64 encoded) or files with external resources
 placed in an adjacent directory.</dd>
       <dt>libdir</dt>
@@ -80,7 +80,7 @@ Defaults to white.</dd>
     <div class="Description">
       <h2>Description</h2>
 
-      <p>Save a rendered widgetframe and its child widget to HTML files.</p>
+      <p>Similar to <code><a href='http://www.rdocumentation.org/packages/htmlwidgets/topics/saveWidget'>saveWidget</a>()</code> with the addition that both the parent widget and the enclosed child widget are saved to two different HTML files.</p>
 
     </div>
       </div>
