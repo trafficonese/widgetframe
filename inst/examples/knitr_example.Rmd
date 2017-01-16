@@ -4,11 +4,12 @@ author: "Bhaskar V. Karambelkar"
 date: "12/13/2016"
 output: 
   html_document: 
-    self_contained: yes
+    self_contained: false
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(self_contained_widgetframes = FALSE)
 ```
 
 ## Widgets in iFrames
