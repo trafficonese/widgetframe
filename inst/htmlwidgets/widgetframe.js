@@ -9,8 +9,7 @@ HTMLWidgets.widget({
     return {
 
       renderValue: function(x) {
-         HTMLWidgets.pymParent = new pym.Parent(el.id, x.url,
-          x.options || {});
+         HTMLWidgets.pymParent =  new pym.Parent(el.id, x.url, x.options || {});
       },
 
       resize: function(width, height) {

@@ -28,6 +28,14 @@ knit_print.widgetframe <- function(x, ..., options = NULL) {
 
   x$x$url <- childFile
 
+  # This is a hack for bookdown to pick up dependencies
+  # See https://github.com/rstudio/bookdown/issues/271
+  x <- x %>%
+    htmlwidgets::appendContent(
+      htmltools::HTML(sprintf("<!-- widgetframe widget-href=\"%s\" -->", childFile))) %>%
+    htmlwidgets::appendContent(
+      htmltools::HTML("<!-- widgetframe libs-href=\"widget_libs\" -->"))
+
   # Knit parent widget
   NextMethod()
 }

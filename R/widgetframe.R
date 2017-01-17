@@ -39,7 +39,7 @@ frameOptions <- function(xdomain = '*', title=NULL, name=NULL,
 #' @title Adds pymjs initialization code to a htmlwidget.
 #' @description
 #' This function augments a htmlwidget so that when saved,
-#' the resulting HTML document can be rendered inside a responsive iframe
+#' the resulting HTML document can be rendered correctly inside a responsive iframe
 #' (created using \href{http://blog.apps.npr.org/pym.js/}{Pym.js}) of another HTML document.
 #' @details
 #' Generate your htmlwidget in the normal way and then call this function
@@ -55,15 +55,15 @@ frameOptions <- function(xdomain = '*', title=NULL, name=NULL,
 #' @seealso \code{\link{frameWidget}()}.
 #' @export
 frameableWidget <- function(widget, renderCallback = NULL) {
-  if(!("htmlwidget" %in% class(widget))) {
+  if (!("htmlwidget" %in% class(widget))) {
     stop ("The input widget argument is not a htmldidget.")
   }
-  if("widgetframe" %in% class(widget)) {
+  if ("widgetframe" %in% class(widget)) {
     stop ("Can't make an already framed widget frameable.")
   }
 
   # is it already frameable
-  if('frameablewidget' %in% class(widget)) {
+  if ('frameablewidget' %in% class(widget)) {
     return(widget)
   }
 
@@ -78,12 +78,13 @@ frameableWidget <- function(widget, renderCallback = NULL) {
   widget$sizingPolicy$browser$padding <- 0
 
   initChildJsCode <- NULL
-  if(is.null(renderCallback)) {
+  if (is.null(renderCallback)) {
     initChildJsCode <- "HTMLWidgets.pymChild = new pym.Child();"
   } else {
     initChildJsCode <- sprintf("HTMLWidgets.pymChild = new pym.Child({renderCallback : %s});", renderCallback)
   }
   # Send the child widget's height after a small delay to the parent.
+  # This is necessary to correctly initialize the height of the iframe for various kinds of widgets.
   initChildJsCode <- paste0(initChildJsCode,"HTMLWidgets.addPostRenderHandler(function(){setTimeout(function(){HTMLWidgets.pymChild.sendHeight();},100);});")
 
   widget %>%
@@ -123,8 +124,8 @@ frameWidget <- function(targetWidget, width = '100%', height = NULL, elementId =
                         options = frameOptions()) {
 
   # Safety check for accidental frameWidget(frameWidget(someWidget))
-  if('widgetframe' %in% class(targetWidget)) {
-    warning("Re framing an already framed widget with new params")
+  if ('widgetframe' %in% class(targetWidget)) {
+    warning("Re-framing an already framed widget with new params")
     targetWidget <- attr(targetWidget$x,'widget')
   }
 
@@ -132,17 +133,17 @@ frameWidget <- function(targetWidget, width = '100%', height = NULL, elementId =
   targetWidget <- frameableWidget(targetWidget)
 
   # Override targetWidget's width/height by this widget's width/height if provided.
-  if(!is.null(width)) {
+  if (!is.null(width)) {
     targetWidget$width <- width
   } else {
-    if(!is.null(targetWidget$width)) {
+    if (!is.null(targetWidget$width)) {
       width <- targetWidget$width
     }
   }
-  if(!is.null(height)) {
+  if (!is.null(height)) {
     targetWidget$height <- height
   } else {
-    if(!is.null(targetWidget$height)) {
+    if (!is.null(targetWidget$height)) {
       height <- targetWidget$height
     }
   }
@@ -177,7 +178,7 @@ print.widgetframe <- function(x, ..., view = interactive()) {
   childWidget <- attr(x$x,'widget')
 
   # This is just an extra safety check, there is no reason why the childWidget should be null.
-  if(!is.null(childWidget)) {
+  if (!is.null(childWidget)) {
 
     childDir <- file.path(parentDir,'widget')
     dir.create(childDir)
@@ -185,18 +186,19 @@ print.widgetframe <- function(x, ..., view = interactive()) {
 
     # Save child widget's HTML inside '/widget' folder inside parent widget's HTML folder.
     htmltools::save_html(
-      htmltools::as.tags(childWidget, standalone=TRUE), file = childHTML)
+      htmltools::as.tags(childWidget, standalone = TRUE), file = childHTML)
 
     # Set the relative URL for child HTML
     x$x$url <- './widget/index.html'
+
   }
 
   # Save parent widget's HTML
   parentHTML <- file.path(parentDir,'index.html')
   htmltools::save_html(
-    htmltools::as.tags(x, standalone=TRUE), file = parentHTML)
+    htmltools::as.tags(x, standalone = TRUE), file = parentHTML)
 
-  if(view) {
+  if (view) {
     viewer(parentHTML)
   }
 
@@ -222,7 +224,7 @@ saveWidgetframe <- function(widget, file, selfcontained = FALSE,
                              libdir = NULL,
                              background = "white", knitrOptions = list()) {
   parentWidget <- NULL
-  if('widgetframe' %in% class(widget)) {
+  if ('widgetframe' %in% class(widget)) {
     parentWidget <- widget
   } else {
     parentWidget <- frameWidget(widget)
@@ -231,7 +233,7 @@ saveWidgetframe <- function(widget, file, selfcontained = FALSE,
     dirname(file),
     paste0(tools::file_path_sans_ext(basename(file)),'_widget'))
   dir.create(childDir)
-  childFile <- file.path(childDir,'index.html')
+  #childFile <- file.path(childDir,'index.html')
 
   parentWidget$x$url <-  paste0(
     tools::file_path_sans_ext(basename(file)),'_widget/index.html')
