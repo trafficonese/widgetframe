@@ -8,7 +8,7 @@ This package provides two functions `frameableWidget`, and `frameWidget`. The `f
 
 #### Project Status
 
-[![Project Status: Active – The project is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active) [![Last-changedate](https://img.shields.io/badge/last%20change-2016--12--13-yellowgreen.svg)](/commits/master)
+[![Project Status: Active – The project is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active) [![Last-changedate](https://img.shields.io/badge/last%20change-2017--01--17-yellowgreen.svg)](/commits/master)
 
 - Currently doesn't work inside a shiny env.
 - Not heavily tested for bookdown / R Markdown site.
