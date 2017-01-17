@@ -1,0 +1,50 @@
+---
+title: "widgetframes"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+---
+
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+knitr::opts_chunk$set(self_contained_widgetframes = FALSE)
+```
+
+Row
+-----------------------------------------------------------------------
+
+### Leaflet
+
+```{r leaflet-01}
+library(leaflet)
+suppressPackageStartupMessages(library(widgetframe))
+l <- leaflet() %>% addTiles() %>% setView(0,0,2)
+frameWidget(l, height = '300')
+```
+
+Row {.tabset .tabset-fade}
+-----------------------------------------------------------------------
+
+### dygraph
+
+```{r dygraph-01}
+library(dygraphs)
+ts <- dygraph(nhtemp, main = "New Haven Temperatures")
+frameWidget(ts, height = 300, width = '95%')
+```
+
+### DT
+
+```{r dt-01}
+library(DT)
+dt <-  datatable(
+  head(iris, 20), 
+  options = list(
+     columnDefs = list(list(className = 'dt-center', targets = 5)),
+     pageLength = 5, lengthMenu = c(5, 10, 15, 20)),
+  fillContainer = F)
+
+frameWidget(dt, width = '95%')
+```
+
