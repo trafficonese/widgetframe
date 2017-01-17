@@ -1,0 +1,13 @@
+---
+title: "leaflet"
+author: "Bhaskar V. Karambelkar"
+---
+
+# Leaflet
+
+```{r leaflet-01}
+library(leaflet)
+library(widgetframe)
+l <- leaflet() %>% addTiles() %>% setView(0,0,2)
+frameWidget(l, height = '400')
+```

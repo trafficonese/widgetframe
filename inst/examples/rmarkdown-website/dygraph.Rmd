@@ -1,0 +1,12 @@
+---
+title: "dygraph"
+author: "Bhaskar V. Karambelkar"
+---
+
+# Dygraph
+
+```{r dygraph-01}
+library(dygraphs)
+ts <- dygraph(nhtemp, main = "New Haven Temperatures")
+frameWidget(ts, height = 350, width = '95%')
+```

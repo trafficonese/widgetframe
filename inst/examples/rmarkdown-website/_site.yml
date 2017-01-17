@@ -1,0 +1,25 @@
+name: "widgetframes"
+output_dir: "."
+output:
+  html_document:
+    theme: cosmo
+    highlight: textmate
+    toc_depth: 3
+    toc_float:
+      collapsed: false
+navbar:
+  title: "Widgetframes in Websites"
+  type: inverse
+  left:
+    - text: "Home"
+      icon: fa-home
+      href: index.html
+    - text: "Leaflet"
+      icon: fa-globe
+      href: leaflet.html
+    - text: "Time Series"
+      icon: fa-line-chart
+      href: dygraph.html
+    - text: "Data Table"
+      icon: fa-table
+      href: dt.html

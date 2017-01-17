@@ -1,0 +1,15 @@
+---
+title: "widgetframes in websites"
+---
+
+
+3 examples of using widgetframe 
+
+- [leaflet](leaflet.html)
+- [dygraph](dygraph.html)
+- [DT](dt.html)
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(cache = TRUE)
+knitr::opts_chunk$set(self_contained_widgetframes = FALSE)
+```
