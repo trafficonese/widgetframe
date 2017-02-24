@@ -34,6 +34,9 @@
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="news/index.html">News</a>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
@@ -52,48 +55,69 @@
       
       </header><div class="row">
   <div class="contents col-md-9">
-    <div id="widgetframe-htmlwidgets-inside-responsive-iframes." class="section level1">
-<h1>widgetframe: htmlwidgets inside responsive iframes.</h1>
+    <div id="widgetframe-htmlwidgets-inside-responsive-iframes." class="section level2">
+<h2 class="hasAnchor">
+<a href="#widgetframe-htmlwidgets-inside-responsive-iframes." class="anchor"></a>widgetframe: htmlwidgets inside responsive iframes.</h2>
 
-<p>This package provides two functions <code>frameableWidget</code>, and <code>frameWidget</code>. The <code>frameableWidget</code> is used to add extra code to a htmlwidget which allows is to be rendered inside a responsive iframe. The <code>frameWidget</code> returns a htmlwidget which displays content of another htmlwidget inside a responsive iframe.</p>
-<div id="information" class="section level2">
-<h2 class="hasAnchor">
-<a href="#widgetframe-htmlwidgets-inside-responsive-iframes." class="anchor"></a>Information</h2>
-<div id="project-status" class="section level3">
-<h3 class="hasAnchor">
-<a href="#information" class="anchor"></a>Project Status</h3>
-<p><a href="http://www.repostatus.org/#active"><img src="http://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active – The project is being actively developed."></a> <a href="/commits/master"><img src="https://img.shields.io/badge/last%20change-2017--01--17-yellowgreen.svg" alt="Last-changedate"></a></p>
-<ul>
-<li>Doesn’t work inside a shiny env.</li>
-<li>Doesn’t correctly work under <a href="https://github.com/rstudio/bookdown/issues/271">bookdown</a> &amp; <a href="https://github.com/rstudio/blogdown/issues/38">blogdown</a>
-</li>
-<li>Works very well for R Markdown Websites, R Markdowns</li>
-</ul>
-</div>
-<div id="build-status" class="section level3">
-<h3 class="hasAnchor">
-<a href="#project-status" class="anchor"></a>Build Status</h3>
 <p><a href="https://travis-ci.org/bhaskarvk/widgetframe"><img src="https://travis-ci.org/bhaskarvk/widgetframe.svg?branch=master" alt="Travis-CI Build Status"></a> <a href="https://ci.appveyor.com/project/bhaskarvk/widgetframe"><img src="https://ci.appveyor.com/api/projects/status/github/bhaskarvk/widgetframe?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a></p>
-</div>
-</div>
-<div id="getting-started." class="section level2">
-<h2 class="hasAnchor">
-<a href="#build-status" class="anchor"></a>Getting Started.</h2>
-<div id="frameablewidget-function." class="section level3">
+<hr>
+<p>The goal of widgetframe is to be able to embed widgets inside iframes using NPR’s <a href="http://blog.apps.npr.org/pym.js/">Pymjs</a> library for responsive iframes.</p>
+<p>This package provides two functions <code>frameableWidget</code>, and <code>frameWidget</code>. The <code>frameableWidget</code> is used to add extra code to a htmlwidget which allows is to be rendered inside a responsive iframe. The <code>frameWidget</code> returns a htmlwidget which displays content of another htmlwidget inside a responsive iframe.</p>
+<div id="current-status" class="section level3">
 <h3 class="hasAnchor">
-<a href="#getting-started." class="anchor"></a>
-<code>frameableWidget</code> function.</h3>
+<a href="#current-status" class="anchor"></a>Current Status</h3>
+<ul>
+<li>Works With
+<ul>
+<li>
+<a href="http://rmarkdown.rstudio.com/flexdashboard/">Flex Dashboard</a>: Check out this <a href="https://rawgit.com/bhaskarvk/widgetframe/master/inst/examples/flexdashboard/dashboard.html">Demo</a>.</li>
+<li>
+<a href="rmarkdown.rstudio.com">RMarkdown</a> + <a href="yihui.name/knitr/">knitr</a>: Check out this <a href="https://rawgit.com/bhaskarvk/widgetframe/master/inst/examples/rmarkdown/knitr_example.html">Demo</a>.</li>
+<li>
+<a href="http://rmarkdown.rstudio.com/lesson-13.html">RMarkdown Website</a>: Check out this <a href="https://rawgit.com/bhaskarvk/widgetframe/master/inst/examples/rmarkdown-website/index.html">Demo</a>.</li>
+<li>
+<a href="https://slides.yihui.name/xaringan/">Xaringan Presentations</a>: Check out this <a href="https://rawgit.com/bhaskarvk/widgetframe/master/inst/examples/xaringan/widgetframe.html#1">Demo</a>.<br>(May also work with other RMarkdown + knitr based presentations.)</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<ul>
+<li>Does Not (Yet) Work With
+<ul>
+<li>Shiny</li>
+<li>
+<a href="https://bookdown.org/">bookdown</a>: See <a href="https://github.com/rstudio/bookdown/issues/271">issue#271</a>
+</li>
+<li>
+<a href="https://github.com/rstudio/blogdown/">blogdown</a>: See <a href="https://github.com/rstudio/blogdown/issues/38">issue#38</a>
+</li>
+</ul>
+</li>
+</ul>
+<p>Installation</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(devtools)) {
+  <span class="kw">install.packages</span>(<span class="st">'devtools'</span>)
+}
+devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">'bhaskarvk/widgetframe'</span>)</code></pre></div>
+</div>
+<div id="usage" class="section level3">
+<h3 class="hasAnchor">
+<a href="#usage" class="anchor"></a>Usage</h3>
+<div id="frameablewidget-function." class="section level4">
+<h4 class="hasAnchor">
+<a href="#frameablewidget-function." class="anchor"></a>
+<code>frameableWidget</code> function.</h4>
 <p>The <code>frameableWidget</code> function should be used when you need a HTML which can be embedded in a CMS system like WordPress/blogger or a static HTML website using the <a href="http://blog.apps.npr.org/pym.js/">Pymjs</a> library.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(leaflet)
 <span class="kw">library</span>(widgetframe)
-l &lt;-<span class="st"> </span><span class="kw">leaflet</span>() %&gt;%<span class="st"> </span><span class="kw">addTiles</span>()
-htmlwidgets::<span class="kw">saveWidget</span>(<span class="kw"><a href="reference/frameableWidget.html">frameableWidget</a></span>(l),<span class="st">'leaflet.html'</span>)</code></pre></div>
+l &lt;-<span class="st"> </span><span class="kw">leaflet</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">addTiles</span>()
+htmlwidgets<span class="op">::</span><span class="kw">saveWidget</span>(<span class="kw"><a href="reference/frameableWidget.html">frameableWidget</a></span>(l),<span class="st">'leaflet.html'</span>)</code></pre></div>
 <p>The resulting leaflet.html contains the necessary Pym.js Child initialization code and will work inside a regular iFrame or better yet a Pym.js responsive iFrame. It is expected that the site which is going to embed this widget’s content has the necessary Pymjs Parent initialization code as described <a href="http://blog.apps.npr.org/pym.js/">here</a>.</p>
 </div>
-<div id="framewidget-function" class="section level3">
-<h3 class="hasAnchor">
-<a href="#frameablewidget-function." class="anchor"></a>
-<code>frameWidget</code> function</h3>
+<div id="framewidget-function" class="section level4">
+<h4 class="hasAnchor">
+<a href="#framewidget-function" class="anchor"></a>
+<code>frameWidget</code> function</h4>
 <p><code>frameWidget</code> function takes an existing htmlwidget as an argument and returns a new htmlwidget which when rendered, wraps the input htmlwdiget inside a responsive iFrame. This function can be used to knit htmlwidgets such that they are unaffected by the parent HTML file’s CSS. This could be useful in <a href="https://bookdown.org/">bookdown</a> or <a href="http://rmarkdown.rstudio.com/rmarkdown_websites.html">R Markdown Websites</a> to embed widgets such that they are unaffected by the site’s global CSS/JS.</p>
 <p>You can use <code>widgetFrame</code> inside your R Markdowns as shown below.</p>
 <pre>
@@ -111,6 +135,11 @@ ts
 </pre>
 </div>
 </div>
+<div id="code-of-conduct" class="section level3">
+<h3 class="hasAnchor">
+<a href="#code-of-conduct" class="anchor"></a>Code of Conduct</h3>
+<p>Please note that this project is released with a <a href="CONDUCT.md">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
+</div>
 </div>
   </div>
 
@@ -125,7 +154,8 @@ ts
 </ul>
 <html><body>
 <h2>Status</h2>
-  <p><a href="http://blog.apps.npr.org/pym.js/">Pymjs</a></p>
+  <p><a href="http://www.repostatus.org/#active"><img src="http://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active – The project is being actively developed."></a></p>
+  <p><a href="/commits/master"><img src="https://img.shields.io/badge/last%20change-2017--01--17-yellowgreen.svg" alt="Last-changedate"></a></p>
 </body></html>
 </div>
   </div>

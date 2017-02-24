@@ -13,7 +13,7 @@ frameableWidget(widget, renderCallback = NULL)
 }
 \description{
 This function augments a htmlwidget so that when saved,
-the resulting HTML document can be rendered inside a responsive iframe
+the resulting HTML document can be rendered correctly inside a responsive iframe
 (created using \href{http://blog.apps.npr.org/pym.js/}{Pym.js}) of another HTML document.
 }
 \details{
@@ -31,4 +31,3 @@ htmlwidgets::saveWidget(
 \seealso{
 \code{\link{frameWidget}()}.
 }
-

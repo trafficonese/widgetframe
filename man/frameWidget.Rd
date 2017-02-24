@@ -41,4 +41,3 @@ frameWidget(l)
 \seealso{
 \code{\link{frameOptions}()}.
 }
-

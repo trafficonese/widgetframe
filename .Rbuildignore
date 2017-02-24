@@ -3,3 +3,5 @@
 ^\.travis\.yml$
 ^appveyor\.yml$
 inst/examples
+^docs$
+^CONDUCT\.md$

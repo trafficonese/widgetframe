@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Save a widgetframe and its child widget to HTML files. — saveWidgetframe • widgetframe</title>
+<title>All news • widgetframe</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -73,44 +73,36 @@
       
       </header>
 
-      <div class="page-header">
-  <h1>Save a widgetframe and its child widget to HTML files.</h1>
-</div>
+      <div class="row">
 
-<div class="row">
   <div class="col-md-9">
-    
-    <p>Similar to <code><a href='http://www.rdocumentation.org/packages/saveWidget/topics/htmlwidgets'>saveWidget</a>()</code> with the addition that both the parent widget and the enclosed child widget are saved to two different HTML files.</p>
-    
-
-    <pre><span class='fu'>saveWidgetframe</span>(<span class='no'>widget</span>, <span class='no'>file</span>, <span class='kw'>selfcontained</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>libdir</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>background</span> <span class='kw'>=</span> <span class='st'>"white"</span>, <span class='kw'>knitrOptions</span> <span class='kw'>=</span> <span class='fu'>list</span>())</pre>
-    
-    <div class="section">
-    <h2>Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>widget</dt>
-      <dd>widgetframe to save</dd>
-      <dt>file</dt>
-      <dd>File to save  the parent widget into. The child widget will be saved to `basename(file)_widget/index.html`.</dd>
-      <dt>selfcontained</dt>
-      <dd>Whether to save the parent and child HTMLs as a single self-contained files. WARNING: Setting this option to true will still result in two HTMLs, one for the parent and another for the child widget.
-(with external resources base64 encoded) or files with external resources
-placed in an adjacent directory.</dd>
-      <dt>libdir</dt>
-      <dd>Directory to copy HTML dependencies into (defaults to
-filename_files).</dd>
-      <dt>background</dt>
-      <dd>Text string giving the html background color of the widget.
-Defaults to white.</dd>
-      <dt>knitrOptions</dt>
-      <dd>A list of <span class="pkg">knitr</span> chunk options.</dd>
-    </dl>
+    <div class="page-header">
+      <h1>Change log <small>All releases</small></h1>
     </div>
-            </div>
+
+    <div class="contents">
+    <div id="widgetframe-0-1-0" class="section level1">
+<h1>widgetframe 0.1.0</h1>
+<div id="new-stuff" class="section level2">
+<h2 class="hasAnchor">
+<a href="#widgetframe-0.1.0" class="anchor"></a>New Stuff</h2>
+<ul>
+<li>Initial version with support for RMarkdown docs/sites, Xaringan Presentations, &amp; Flexdashboard.</li>
+</ul>
+</div>
+</div>
+    </div>
   </div>
-  <div class="col-md-3">
+
+  <div class="col-md-3 hidden-xs">
+    <div id="sidebar"><div id="tocnav">
+      <h2>Contents</h2>
+      <ul class="nav nav-pills nav-stacked">
+        <li><a href="#widgetframe-0-1-0">0.1.0</a></li>
+      </ul>
+    </div></div>
   </div>
+
 </div>
 
       <footer>

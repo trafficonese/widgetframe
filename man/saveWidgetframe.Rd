@@ -27,4 +27,3 @@ Defaults to white.}
 \description{
 Similar to \code{\link[htmlwidgets]{saveWidget}()} with the addition that both the parent widget and the enclosed child widget are saved to two different HTML files.
 }
-
