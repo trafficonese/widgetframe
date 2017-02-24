@@ -5,3 +5,4 @@
 inst/examples
 ^docs$
 ^CONDUCT\.md$
+^cran-comments\.md$

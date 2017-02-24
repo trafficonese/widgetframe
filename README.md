@@ -24,7 +24,7 @@ This package provides two functions `frameableWidget`, and `frameWidget`. The `f
     * [bookdown](https://bookdown.org/): See [issue#271](https://github.com/rstudio/bookdown/issues/271)
     * [blogdown](https://github.com/rstudio/blogdown/): See [issue#38](https://github.com/rstudio/blogdown/issues/38)
 
- Installation
+### Installation
 
 ```r
 if(!require(devtools)) {
