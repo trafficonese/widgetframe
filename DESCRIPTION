@@ -1,18 +1,18 @@
 Package: widgetframe
 Type: Package
-Title: Package for Wrapping Htmlwidgets in Responsive Iframes
+Title: Htmlwidgets in Responsive Iframes
 Version: 0.1.0
 Authors@R: c(
     person("Bhaskar", "Karambelkar", email = "bhaskarvk@gmail.com", role = c("aut", "cre"))
     )
-Description: This package provides two functions `frameableWidget`, and `frameWidget`.
+Description: Provides two functions `frameableWidget`, and `frameWidget`.
   The `frameableWidget` is used to add extra code to a htmlwidget which
   allows is to be rendered correctly inside a responsive iframe.
   The `frameWidget` is a htmlwidget which displays content of another htmlwidget
   inside a responsive iframe.
   These functions allow for easier embedding of htmlwidgets in CMS systems
   such as wordpress, blogger etc.
-  They also allow for seperation of widget content from main HTML content where
+  They also allow for separation of widget content from main HTML content where
   CSS styles of the main HTML could interfere with the widget.
 License: MIT + file LICENSE
 Encoding: UTF-8
