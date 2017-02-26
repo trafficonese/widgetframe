@@ -6,3 +6,5 @@ inst/examples
 ^docs$
 ^CONDUCT\.md$
 ^cran-comments\.md$
+^README\.Rmd$
+^README\.md$
