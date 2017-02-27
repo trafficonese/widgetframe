@@ -2,11 +2,11 @@
 widgetframe: htmlwidgets inside responsive iframes.
 ---------------------------------------------------
 
-[![Project Status: Active – The project is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active) [![Last-changedate](https://img.shields.io/badge/last%20change-2017--02--26-green.svg)](/commits/master) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Project Status: Active – The project is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active) [![Last-changedate](https://img.shields.io/badge/last%20change-2017--02--27-green.svg)](/commits/master) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![keybase verified](https://img.shields.io/badge/keybase-verified-brightgreen.svg)](https://gist.github.com/bhaskarvk/46fbf2ba7b5713151d7e)
 
 [![Travis-CI Build Status](https://travis-ci.org/bhaskarvk/widgetframe.svg?branch=master)](https://travis-ci.org/bhaskarvk/widgetframe) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/bhaskarvk/widgetframe?branch=master&svg=true)](https://ci.appveyor.com/project/bhaskarvk/widgetframe)
 
-[![minimal R version](https://img.shields.io/badge/R%3E%3D-3.1.0-6666ff.svg)](https://cran.r-project.org/) [![packageversion](https://img.shields.io/badge/Package%20version-0.1.0-orange.svg?style=flat-square)](commits/master)
+[![minimal R version](https://img.shields.io/badge/R%3E%3D-3.1.0-6666ff.svg)](https://cran.r-project.org/) [![packageversion](https://img.shields.io/badge/Package%20version-0.1.0-orange.svg?style=flat-square)](commits/master) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/widgetframe)](https://cran.r-project.org/package=widgetframe) [![](http://cranlogs.r-pkg.org/badges/grand-total/widgetframe)](http://cran.rstudio.com/web/packages/widgetframe/index.html)
 
 ------------------------------------------------------------------------
 
