@@ -1,7 +1,7 @@
 pymjsDependency <- function() {
   list(
     htmltools::htmlDependency(
-      name = 'pymjs', version = '1.1.2',
+      name = 'pymjs', version = '1.2.0',
       src = system.file('htmlwidgets/pymjs', package = 'widgetframe'),
       script = c('pym.v1.min.js')
     )
@@ -14,7 +14,8 @@ addPymjsDependency <- function(widget) {
 }
 
 #' Options for widget's iframe.
-#' @description Taken from \href{http://blog.apps.npr.org/pym.js/api/pym.js/1.1.2/module-pym.Parent.html}{Pym.js Documentation}. In addition also check out the \href{https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe}{iframe documentation}.
+#' @description Taken from \href{http://blog.apps.npr.org/pym.js/api/pym.js/1.1.2/module-pym.Parent.html}{Pym.js Documentation}.
+#' In addition also check out the \href{https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe}{iframe documentation}.
 #' @param xdomain xdomain to validate messages received.
 #' @param title If passed it will be assigned to the iframe title attribute.
 #' @param name If passed it will be assigned to the iframe name attribute.
@@ -43,9 +44,13 @@ frameOptions <- function(xdomain = '*', title=NULL, name=NULL,
 #' (created using \href{http://blog.apps.npr.org/pym.js/}{Pym.js}) of another HTML document.
 #' @details
 #' Generate your htmlwidget in the normal way and then call this function
-#' passing in your widget. Then call \code{\link[htmlwidgets]{saveWidget}()} and the saved HTML file is now embeddable inside a Pym.js iframe of another HTML document. See \href{http://blog.apps.npr.org/pym.js/}{Pym.js} documentation on how to create an HTML document with a responsive iframe.
+#' passing in your widget. Then call \code{\link[htmlwidgets]{saveWidget}()} and
+#'  the saved HTML file is now embeddable inside a Pym.js iframe of another HTML document.
+#'  See \href{http://blog.apps.npr.org/pym.js/}{Pym.js} documentation on how to
+#'  create an HTML document with a responsive iframe.
 #' @param widget The widget to add the pymjs code to.
-#' @param renderCallback An optional Javascript function wrapped in \code{\link[htmlwidgets]{JS}()} which will be called when parent sends a resize event.
+#' @param renderCallback An optional Javascript function wrapped in \code{\link[htmlwidgets]{JS}()}
+#'  which will be called when parent sends a resize event.
 #' @examples \dontrun{
 #' library(leaflet)
 #' l <- leaflet() %>% addTiles() %>% setView(0,0,1)
@@ -81,11 +86,15 @@ frameableWidget <- function(widget, renderCallback = NULL) {
   if (is.null(renderCallback)) {
     initChildJsCode <- "HTMLWidgets.pymChild = new pym.Child();"
   } else {
-    initChildJsCode <- sprintf("HTMLWidgets.pymChild = new pym.Child({renderCallback : %s});", renderCallback)
+    initChildJsCode <- sprintf(
+      "HTMLWidgets.pymChild = new pym.Child({renderCallback : %s});", renderCallback)
   }
   # Send the child widget's height after a small delay to the parent.
   # This is necessary to correctly initialize the height of the iframe for various kinds of widgets.
-  initChildJsCode <- paste0(initChildJsCode,"HTMLWidgets.addPostRenderHandler(function(){setTimeout(function(){HTMLWidgets.pymChild.sendHeight();},100);});")
+  initChildJsCode <- paste0(initChildJsCode,
+                            "HTMLWidgets.addPostRenderHandler(function(){
+                                setTimeout(function(){HTMLWidgets.pymChild.sendHeight();},100);
+                            });")
 
   widget %>%
     addPymjsDependency() %>%
@@ -133,6 +142,7 @@ frameWidget <- function(targetWidget, width = '100%', height = NULL, elementId =
   targetWidget <- frameableWidget(targetWidget)
 
   # Override targetWidget's width/height by this widget's width/height if provided.
+  # Alternatively use target widget's width/height if none provided for the framing widget.
   if (!is.null(width)) {
     targetWidget$width <- width
   } else {
@@ -207,13 +217,16 @@ print.widgetframe <- function(x, ..., view = interactive()) {
 
 #' Save a widgetframe and its child widget to HTML files.
 #'
-#' @description Similar to \code{\link[htmlwidgets]{saveWidget}()} with the addition that both the parent widget and the enclosed child widget are saved to two different HTML files.
+#' @description Similar to \code{\link[htmlwidgets]{saveWidget}()} with the addition
+#'  that both the parent widget and the enclosed child widget are saved to two different HTML files.
 #'
 #' @param widget widgetframe to save
-#' @param file File to save  the parent widget into. The child widget will be saved to `basename(file)_widget/index.html`.
-#' @param selfcontained Whether to save the parent and child HTMLs as a single self-contained files. WARNING: Setting this option to true will still result in two HTMLs, one for the parent and another for the child widget.
-#'   (with external resources base64 encoded) or files with external resources
-#'   placed in an adjacent directory.
+#' @param file File to save  the parent widget into. The child widget will be saved to
+#'  `basename(file)_widget/index.html`.
+#' @param selfcontained Whether to save the parent and child HTMLs as a single self-contained files.
+#'  WARNING: Setting this option to true will still result in two HTMLs, one for
+#'  the parent and another for the child widget (with external resources base64 encoded),
+#'   or files with external resources placed in an adjacent directory.
 #' @param libdir Directory to copy HTML dependencies into (defaults to
 #'   filename_files).
 #' @param background Text string giving the html background color of the widget.
@@ -233,7 +246,6 @@ saveWidgetframe <- function(widget, file, selfcontained = FALSE,
     dirname(file),
     paste0(tools::file_path_sans_ext(basename(file)),'_widget'))
   dir.create(childDir)
-  #childFile <- file.path(childDir,'index.html')
 
   parentWidget$x$url <-  paste0(
     tools::file_path_sans_ext(basename(file)),'_widget/index.html')

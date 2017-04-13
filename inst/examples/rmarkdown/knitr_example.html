@@ -4,7 +4,7 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
@@ -25,8 +25,8 @@
 <link href="knitr_example_files/highlightjs-1.1/default.css" rel="stylesheet" />
 <script src="knitr_example_files/highlightjs-1.1/highlight.js"></script>
 <script src="knitr_example_files/htmlwidgets-0.8/htmlwidgets.js"></script>
-<script src="knitr_example_files/pymjs-1.1.2/pym.v1.min.js"></script>
-<script src="knitr_example_files/widgetframe-binding-0.1.0/widgetframe.js"></script>
+<script src="knitr_example_files/pymjs-1.2.0/pym.v1.min.js"></script>
+<script src="knitr_example_files/widgetframe-binding-0.2.0/widgetframe.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -129,27 +129,32 @@ $(document).ready(function () {
 
 <div id="widgets-in-iframes" class="section level2">
 <h2>Widgets in iFrames</h2>
-<div id="leaflet" class="section level3">
-<h3>Leaflet</h3>
+<div id="leaflet-01" class="section level3">
+<h3>Leaflet 01</h3>
 <pre class="r"><code>library(leaflet)
 library(widgetframe)</code></pre>
 <pre><code>## Loading required package: htmlwidgets</code></pre>
 <pre class="r"><code>l &lt;- leaflet() %&gt;% addTiles() %&gt;% setView(0,0,2)
 frameWidget(l, height = &#39;400&#39;)</code></pre>
-<div id="htmlwidget-57eb8804153c39da9b94" style="width:100%;height:400px;" class="widgetframe html-widget"></div>
-<!-- widgetframe widget-href="widget_leaflet-01.html" -->
-<!-- widgetframe libs-href="widget_libs" -->
-<script type="application/json" data-for="htmlwidget-57eb8804153c39da9b94">{"x":{"url":"widget_leaflet-01.html","options":{"xdomain":"*","allowfullscreen":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-463a0cd782363a7cdbd9" style="width:100%;height:400px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-463a0cd782363a7cdbd9">{"x":{"url":"knitr_example_files/widgets/widget_leaflet-01.html","options":{"xdomain":"*","allowfullscreen":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="leaflet-02" class="section level3">
+<h3>Leaflet 02</h3>
+<pre class="r"><code>library(leaflet)
+suppressPackageStartupMessages(library(widgetframe))
+l &lt;- leaflet() %&gt;% addProviderTiles(providers$CartoDB.DarkMatter) %&gt;% setView(0,0,2)
+frameWidget(l, height = &#39;300&#39;)</code></pre>
+<div id="htmlwidget-3369324d3435f663b454" style="width:100%;height:300px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3369324d3435f663b454">{"x":{"url":"knitr_example_files/widgets/widget_leaflet-02.html","options":{"xdomain":"*","allowfullscreen":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="dygraph" class="section level3">
 <h3>Dygraph</h3>
 <pre class="r"><code>library(dygraphs)
 ts &lt;- dygraph(nhtemp, main = &quot;New Haven Temperatures&quot;)
 frameWidget(ts, height = 350, width = &#39;95%&#39;)</code></pre>
-<div id="htmlwidget-992f72eef19ba6ccb5cf" style="width:95%;height:350px;" class="widgetframe html-widget"></div>
-<!-- widgetframe widget-href="widget_dygraph-01.html" -->
-<!-- widgetframe libs-href="widget_libs" -->
-<script type="application/json" data-for="htmlwidget-992f72eef19ba6ccb5cf">{"x":{"url":"widget_dygraph-01.html","options":{"xdomain":"*","allowfullscreen":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-f1f3198655004a256d36" style="width:95%;height:350px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f1f3198655004a256d36">{"x":{"url":"knitr_example_files/widgets/widget_dygraph-01.html","options":{"xdomain":"*","allowfullscreen":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="dt" class="section level3">
 <h3>DT</h3>
@@ -162,10 +167,8 @@ dt &lt;-  datatable(
   fillContainer = T)
 
 frameWidget(dt, height = 350, width = &#39;95%&#39;)</code></pre>
-<div id="htmlwidget-8da1654fad82a65b7f44" style="width:95%;height:350px;" class="widgetframe html-widget"></div>
-<!-- widgetframe widget-href="widget_dt-01.html" -->
-<!-- widgetframe libs-href="widget_libs" -->
-<script type="application/json" data-for="htmlwidget-8da1654fad82a65b7f44">{"x":{"url":"widget_dt-01.html","options":{"xdomain":"*","allowfullscreen":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-282352e5f3e039855538" style="width:95%;height:350px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-282352e5f3e039855538">{"x":{"url":"knitr_example_files/widgets/widget_dt-01.html","options":{"xdomain":"*","allowfullscreen":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 

@@ -2,19 +2,20 @@
 title: "widgetframes"
 output: 
   flexdashboard::flex_dashboard:
+    self_contained: FALSE
     orientation: rows
 ---
 
 
 ```{r setup, include=FALSE}
 library(flexdashboard)
-knitr::opts_chunk$set(self_contained_widgetframes = FALSE)
+knitr::opts_chunk$set(widgetframe_self_contained = FALSE)
 ```
 
-Row
+Row {.tabset .tabset-fade}
 -----------------------------------------------------------------------
 
-### Leaflet
+### Leaflet 01
 
 ```{r leaflet-01}
 library(leaflet)
@@ -22,6 +23,16 @@ suppressPackageStartupMessages(library(widgetframe))
 l <- leaflet() %>% addTiles() %>% setView(0,0,2)
 frameWidget(l, height = '300')
 ```
+
+### Leaflet 02
+
+```{r leaflet-02}
+library(leaflet)
+suppressPackageStartupMessages(library(widgetframe))
+l <- leaflet() %>% addProviderTiles(providers$CartoDB.DarkMatter) %>% setView(0,0,2)
+frameWidget(l, height = '300')
+```
+
 
 Row {.tabset .tabset-fade}
 -----------------------------------------------------------------------

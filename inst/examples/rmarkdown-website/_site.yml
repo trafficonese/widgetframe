@@ -1,7 +1,8 @@
 name: "widgetframes"
-output_dir: "."
+output_dir: "site"
 output:
   html_document:
+    self_contained: false
     theme: cosmo
     highlight: textmate
     toc_depth: 3

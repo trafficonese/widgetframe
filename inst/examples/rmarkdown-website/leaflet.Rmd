@@ -3,11 +3,27 @@ title: "leaflet"
 author: "Bhaskar V. Karambelkar"
 ---
 
-# Leaflet
+```{r, include=FALSE}
+knitr::opts_chunk$set(widgetframe_self_contained = FALSE)
+knitr::opts_chunk$set(widgetframe_widgetsdir = 'site_libs/widgets')
+```
+
+# Leaflet 
+
+##  01
 
 ```{r leaflet-01}
 library(leaflet)
 library(widgetframe)
 l <- leaflet() %>% addTiles() %>% setView(0,0,2)
 frameWidget(l, height = '400')
+```
+
+## 02
+
+```{r leaflet-02}
+library(leaflet)
+suppressPackageStartupMessages(library(widgetframe))
+l <- leaflet() %>% addProviderTiles(providers$CartoDB.DarkMatter) %>% setView(0,0,2)
+frameWidget(l, height = '300')
 ```

@@ -3,10 +3,16 @@ title: "dt"
 author: "Bhaskar V. Karambelkar"
 ---
 
+```{r, include=FALSE}
+knitr::opts_chunk$set(widgetframe_self_contained = FALSE)
+knitr::opts_chunk$set(widgetframe_widgetsdir = 'site_libs/widgets')
+```
+
 # DT
 
 ```{r dt-01}
 library(DT)
+library(widgetframe)
 dt <-  datatable(
   head(iris, 20), 
   options = list(

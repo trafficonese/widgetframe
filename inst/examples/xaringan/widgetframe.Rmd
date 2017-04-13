@@ -6,7 +6,6 @@ output:
   xaringan::moon_reader:
     chakra: libs/remark-latest.min.js
     css: ["default", "style.css"]
-    lib_dir: libs
     nature:
       ratio: '16:9'
       highlightStyle: github
@@ -19,7 +18,7 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_chunk$set(self_contained_widgetframes = FALSE)
+knitr::opts_chunk$set(widgetframe_self_contained = FALSE)
 ```
 
 # `widgfetframe` in Xaringan
