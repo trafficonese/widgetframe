@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Demo of widgetframes in bookdown</title>
+  <meta name="description" content="Demo of widgetframes in bookdown">
+  <meta name="generator" content="bookdown 0.3.18 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Demo of widgetframes in bookdown" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Demo of widgetframes in bookdown" />
+  
+  
+  
+
+<meta name="author" content="Bhaskar V. Karambelkar">
+
+
+<meta name="date" content="2017-04-26">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="dygraph.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-0.8/htmlwidgets.js"></script>
+<script src="libs/pymjs-1.2.0/pym.v1.min.js"></script>
+<script src="libs/widgetframe-binding-0.2.0/widgetframe.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="part"><span><b>I Widgets in iFrames</b></span></li>
+<li class="chapter" data-level="1" data-path="leaflet.html"><a href="leaflet.html"><i class="fa fa-check"></i><b>1</b> Leaflet</a><ul>
+<li class="chapter" data-level="1.1" data-path="leaflet.html"><a href="leaflet.html#example-1"><i class="fa fa-check"></i><b>1.1</b> Example 1</a></li>
+<li class="chapter" data-level="1.2" data-path="leaflet.html"><a href="leaflet.html#example-2"><i class="fa fa-check"></i><b>1.2</b> Example 2</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="dygraph.html"><a href="dygraph.html"><i class="fa fa-check"></i><b>2</b> Dygraph</a><ul>
+<li class="chapter" data-level="2.1" data-path="dygraph.html"><a href="dygraph.html#example-1-1"><i class="fa fa-check"></i><b>2.1</b> Example 1</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="dt.html"><a href="dt.html"><i class="fa fa-check"></i><b>3</b> DT</a><ul>
+<li class="chapter" data-level="3.1" data-path="dt.html"><a href="dt.html#example-1-2"><i class="fa fa-check"></i><b>3.1</b> Example 1</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Demo of widgetframes in bookdown</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="dt" class="section level1">
+<h1><span class="header-section-number">3</span> DT</h1>
+<div id="example-1-2" class="section level2">
+<h2><span class="header-section-number">3.1</span> Example 1</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(DT)
+dt &lt;-<span class="st">  </span><span class="kw">datatable</span>(
+  <span class="kw">head</span>(iris, <span class="dv">20</span>), 
+  <span class="dt">options =</span> <span class="kw">list</span>(
+     <span class="dt">columnDefs =</span> <span class="kw">list</span>(<span class="kw">list</span>(<span class="dt">className =</span> <span class="st">&#39;dt-center&#39;</span>, <span class="dt">targets =</span> <span class="dv">5</span>)),
+     <span class="dt">pageLength =</span> <span class="dv">5</span>, <span class="dt">lengthMenu =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>)),
+  <span class="dt">fillContainer =</span> T)
+
+<span class="kw">frameWidget</span>(dt, <span class="dt">height =</span> <span class="dv">350</span>, <span class="dt">width =</span> <span class="st">&#39;95%&#39;</span>)</code></pre></div>
+<div id="htmlwidget-eee0e3faaa0e602f994d" style="width:95%;height:350px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-eee0e3faaa0e602f994d">{"x":{"url":"widgets/widget_dt-01.html","options":{"xdomain":"*","allowfullscreen":false}},"evals":[],"jsHooks":[]}</script>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="dygraph.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

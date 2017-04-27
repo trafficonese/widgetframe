@@ -1,0 +1,6 @@
+[
+["index.html", "Demo of widgetframes in bookdown Preface", " Demo of widgetframes in bookdown Bhaskar V. Karambelkar 2017-04-26 Preface Just a demo book to show how widgetframe package can be used along with bookdown for embedding widgets correctly (without having their CSS rules messed up) in gitbooks. "],
+["leaflet.html", "1 Leaflet 1.1 Example 1 1.2 Example 2", " 1 Leaflet 1.1 Example 1 library(leaflet) library(widgetframe) ## Loading required package: htmlwidgets l &lt;- leaflet() %&gt;% addTiles() %&gt;% setView(0,0,2) frameWidget(l, height = &#39;400&#39;) 1.2 Example 2 l &lt;- leaflet() %&gt;% addProviderTiles(providers$CartoDB.DarkMatter) %&gt;% setView(0,0,2) frameWidget(l, height = &#39;400&#39;) "],
+["dygraph.html", "2 Dygraph 2.1 Example 1", " 2 Dygraph 2.1 Example 1 library(dygraphs) ts &lt;- dygraph(nhtemp, main = &quot;New Haven Temperatures&quot;) frameWidget(ts, height = 350, width = &#39;95%&#39;) "],
+["dt.html", "3 DT 3.1 Example 1", " 3 DT 3.1 Example 1 library(DT) dt &lt;- datatable( head(iris, 20), options = list( columnDefs = list(list(className = &#39;dt-center&#39;, targets = 5)), pageLength = 5, lengthMenu = c(5, 10, 15, 20)), fillContainer = T) frameWidget(dt, height = 350, width = &#39;95%&#39;) "]
+]

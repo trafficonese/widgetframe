@@ -1,0 +1,20 @@
+---
+title: "Chapter 3"
+author: "Bhaskar V. Karambelkar"
+---
+
+# DT
+
+## Example 1
+
+```{r dt-01}
+library(DT)
+dt <-  datatable(
+  head(iris, 20), 
+  options = list(
+     columnDefs = list(list(className = 'dt-center', targets = 5)),
+     pageLength = 5, lengthMenu = c(5, 10, 15, 20)),
+  fillContainer = T)
+
+frameWidget(dt, height = 350, width = '95%')
+```

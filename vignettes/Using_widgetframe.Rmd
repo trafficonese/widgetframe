@@ -20,12 +20,12 @@ This package provides two functions `frameableWidget`, and `frameWidget`. The `f
     * [RMarkdown](rmarkdown.rstudio.com) + [knitr](yihui.name/knitr/): Check out this [Demo](https://rawgit.com/bhaskarvk/widgetframe/master/inst/examples/rmarkdown/knitr_example.html).
     * [RMarkdown Website](http://rmarkdown.rstudio.com/lesson-13.html): Check out this [Demo](https://rawgit.com/bhaskarvk/widgetframe/master/inst/examples/rmarkdown-website/index.html).
     * [Xaringan Presentations](https://slides.yihui.name/xaringan/): Check out this [Demo](https://rawgit.com/bhaskarvk/widgetframe/master/inst/examples/xaringan/widgetframe.html#1).<br/>(May also work with other RMarkdown + knitr based presentations.)
+    * [Bookdown](https://bookdown.org/) gitbook: Needs a Makefile, but works. Check out this [Demo](https://rawgit.com/bhaskarvk/widgetframe/master/inst/examples/bookdown/book/index.html).
 
 <br/>
 
 - Does Not (Yet) Work With
     * Shiny
-    * [bookdown](https://bookdown.org/): See [issue#271](https://github.com/rstudio/bookdown/issues/271)
     * [blogdown](https://github.com/rstudio/blogdown/): See [issue#38](https://github.com/rstudio/blogdown/issues/38)
 
 ### Installation
