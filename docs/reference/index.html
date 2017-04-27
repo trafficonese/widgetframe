@@ -11,8 +11,8 @@
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -81,7 +81,7 @@
     <div class="page-header">
       <h1>
         Reference
-        <small>version&nbsp;0.1.0</small>
+        <small>version&nbsp;0.2.0</small>
       </h1>
     </div>
 
@@ -96,8 +96,22 @@
       <tbody>
         <tr>
           <th colspan="2">
-            <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
+            <h2 id="section-package-description" class="hasAnchor"><a href="#section-package-description" class="anchor"></a>Package Description</h2>
             <p class="section-desc"></p>
+          </th>
+        </tr>
+        <tr>
+          <!--  -->
+          <td>
+            <p><code><a href="widgetframe.html">widgetframe</a></code> </p>
+          </td>
+          <td><p>widgetframe: A package for wrapping htmlwidgets in responsive iframes.</p></td>
+        </tr>
+      </tbody><tbody>
+        <tr>
+          <th colspan="2">
+            <h2 id="section-functions-for-framable-widgets" class="hasAnchor"><a href="#section-functions-for-framable-widgets" class="anchor"></a>Functions for framable widgets</h2>
+            <p class="section-desc"><p>Allows easy embedding of htmlwidgets in CMSes such as Drupal/Wordpress etc.</p></p>
           </th>
         </tr>
         <tr>
@@ -109,10 +123,18 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="frameOptions.html">frameOptions</a></code> </p>
+            <p><code><a href="saveWidgetframe.html">saveWidgetframe</a></code> </p>
           </td>
-          <td><p>Options for widget's iframe.</p></td>
-        </tr><tr>
+          <td><p>Save a widgetframe and its child widget to HTML files.</p></td>
+        </tr>
+      </tbody><tbody>
+        <tr>
+          <th colspan="2">
+            <h2 id="section-functions-for-framing-widgets" class="hasAnchor"><a href="#section-functions-for-framing-widgets" class="anchor"></a>Functions for framing widgets</h2>
+            <p class="section-desc"><p>Renders htmlwidgets in responsive iframes in Rmarkdown documents.</p></p>
+          </th>
+        </tr>
+        <tr>
           <!--  -->
           <td>
             <p><code><a href="frameWidget.html">frameWidget</a></code> </p>
@@ -121,21 +143,9 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="saveWidgetframe.html">saveWidgetframe</a></code> </p>
+            <p><code><a href="frameOptions.html">frameOptions</a></code> </p>
           </td>
-          <td><p>Save a widgetframe and its child widget to HTML files.</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="widgetframe-shiny.html">widgetframe-shiny</a></code> <code><a href="widgetframe-shiny.html">widgetframeOutput</a></code> <code><a href="widgetframe-shiny.html">renderWidgetframe</a></code> </p>
-          </td>
-          <td><p>Shiny bindings for widgetframe</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="widgetframe.html">widgetframe</a></code> <code><a href="widgetframe.html">widgetframe-package</a></code> </p>
-          </td>
-          <td><p>widgetframe: A package for wrapping htmlwidgets in responsive iframes.</p></td>
+          <td><p>Options for widget's iframe.</p></td>
         </tr>
       </tbody>
       </table>
@@ -145,14 +155,16 @@
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#section-package-description">Package Description</a></li>
+      <li><a href="#section-functions-for-framable-widgets">Functions for framable widgets</a></li>
+      <li><a href="#section-functions-for-framing-widgets">Functions for framing widgets</a></li>
     </ul>
   </div>
 </div>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Bhaskar Karambelkar.</p>
+  <p>Developed by <a href='https://www.karambelkar.info/'>Bhaskar Karambelkar</a>.</p>
 </div>
 
 <div class="pkgdown">
@@ -161,6 +173,23 @@
 
       </footer>
    </div>
+
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//apps.karambelkar.info/pk/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '4']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//apps.karambelkar.info/pk/piwik.php?idsite=4&rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
 
   </body>
 </html>

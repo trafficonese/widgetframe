@@ -1,0 +1,25 @@
+title: widgetframe
+authors:
+  Bhaskar Karambelkar:
+    href: https://www.karambelkar.info/
+
+template:
+  package: pkgdown.bvk
+  params:
+    bootswatch: yeti
+
+reference:
+  - title: Package Description
+    desc: ~
+    contents:
+    - '`widgetframe`'
+  - title: Functions for framable widgets
+    desc: Allows easy embedding of htmlwidgets in CMSes such as Drupal/Wordpress etc.
+    contents:
+    - '`frameableWidget`'
+    - '`saveWidgetframe`'
+  - title: Functions for framing widgets
+    desc: Renders htmlwidgets in responsive iframes in Rmarkdown documents.
+    contents:
+    - '`frameWidget`'
+    - '`frameOptions`'
