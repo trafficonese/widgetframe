@@ -21,7 +21,7 @@ For each of the document type below you can find fully working example code in t
 - Works With
     * [Flex Dashboard](http://rmarkdown.rstudio.com/flexdashboard/):  [Demo](https://rawgit.com/bhaskarvk/widgetframe/master/inst/examples/flexdashboard/dashboard.html).
     * [RMarkdown](rmarkdown.rstudio.com) + [knitr](yihui.name/knitr/):  [Demo](https://rawgit.com/bhaskarvk/widgetframe/master/inst/examples/rmarkdown/knitr_example.html).
-    * [RMarkdown Website](http://rmarkdown.rstudio.com/lesson-13.html):  [Demo](https://rawgit.com/bhaskarvk/widgetframe/master/inst/examples/rmarkdown-website/index.html).
+    * [RMarkdown Website](http://rmarkdown.rstudio.com/lesson-13.html):  [Demo](https://rawgit.com/bhaskarvk/widgetframe/master/inst/examples/rmarkdown-website/site/index.html).
     * [Xaringan Presentations](https://slides.yihui.name/xaringan/):  [Demo](https://rawgit.com/bhaskarvk/widgetframe/master/inst/examples/xaringan/widgetframe.html#1).<br/>(May also work with other RMarkdown + knitr based presentations.)
     * [Bookdown](https://bookdown.org/) gitbook: (Needs a Makefile for assembly).  [Demo](https://rawgit.com/bhaskarvk/widgetframe/master/inst/examples/bookdown/book/index.html).
 
@@ -33,7 +33,7 @@ For each of the document type below you can find fully working example code in t
 
 ### Installation
 
-Avaliable on [CRAN](https://cran.rstudio.com/web/packages/widgetframe/) and can be installed using ...
+Avaliable on [CRAN](https://cran.r-project.org/package=widgetframe) and can be installed using ...
 
 ```{r, eval=FALSE}
 install.packages('widgetframe')
