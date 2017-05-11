@@ -9,7 +9,8 @@ frameableWidget(widget, renderCallback = NULL)
 \arguments{
 \item{widget}{The widget to add the pymjs code to.}
 
-\item{renderCallback}{An optional Javascript function wrapped in \code{\link[htmlwidgets]{JS}()} which will be called when parent sends a resize event.}
+\item{renderCallback}{An optional Javascript function wrapped in \code{\link[htmlwidgets]{JS}()}
+which will be called when parent sends a resize event.}
 }
 \description{
 This function augments a htmlwidget so that when saved,
@@ -18,7 +19,10 @@ the resulting HTML document can be rendered correctly inside a responsive iframe
 }
 \details{
 Generate your htmlwidget in the normal way and then call this function
-passing in your widget. Then call \code{\link[htmlwidgets]{saveWidget}()} and the saved HTML file is now embeddable inside a Pym.js iframe of another HTML document. See \href{http://blog.apps.npr.org/pym.js/}{Pym.js} documentation on how to create an HTML document with a responsive iframe.
+passing in your widget. Then call \code{\link[htmlwidgets]{saveWidget}()} and
+ the saved HTML file is now embeddable inside a Pym.js iframe of another HTML document.
+ See \href{http://blog.apps.npr.org/pym.js/}{Pym.js} documentation on how to
+ create an HTML document with a responsive iframe.
 }
 \examples{
 \dontrun{

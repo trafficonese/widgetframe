@@ -60,41 +60,42 @@
       <h1>Using widgetframe</h1>
                         <h4 class="author">Bhaskar V. Karambelkar</h4>
             
-            <h4 class="date">2017-04-26</h4>
+            <h4 class="date">2017-05-11</h4>
           </div>
 
     
     
 <div class="contents">
-<p>The goal of widgetframe is to be able to embed widgets inside iframes using NPR’s <a href="http://blog.apps.npr.org/pym.js/">Pymjs</a> library for responsive iframes.</p>
-<p>This package provides two functions <code>frameableWidget</code>, and <code>frameWidget</code>. The <code>frameableWidget</code> is used to add extra code to a htmlwidget which allows is to be rendered inside a responsive iframe. The <code>frameWidget</code> returns a htmlwidget which displays content of another htmlwidget inside a responsive iframe.</p>
+<p>The <code>widgetframe</code> package eases embedding of <code>htmlwidgets</code> inside various HTML based R Markdown documents using iframes. To make the iframes <a href="https://en.wikipedia.org/wiki/Responsive_web_design">responsive</a> it uses NPR’s <a href="http://blog.apps.npr.org/pym.js/">Pymjs</a> library.</p>
+<p>This package provides two primary functions, <code>frameableWidget</code>, and <code>frameWidget</code>. <code>frameableWidget</code> is used to add extra code to a <code>htmlwidgets</code> instance, which allows it to be rendered inside a responsive iframe. <code>frameWidget</code> returns a new <code>htmlwidgets</code> instance, which wraps and displays content of another <code>htmlwidgets</code> instance (e.g. <code>leaflet</code>, <code>DT</code> etc.) inside a responsive iframe.</p>
 <div id="current-status" class="section level3">
 <h3 class="hasAnchor">
 <a href="#current-status" class="anchor"></a>Current Status</h3>
+<p>For each of the document type below you can find fully working example code in the <a href="https://github.com/bhaskarvk/widgetframe/tree/master/inst/examples">Github Repo</a>.</p>
 <ul>
 <li>Works With
 <ul>
 <li>
-<a href="http://rmarkdown.rstudio.com/flexdashboard/">Flex Dashboard</a>: Check out this <a href="https://rawgit.com/bhaskarvk/widgetframe/master/inst/examples/flexdashboard/dashboard.html">Demo</a>.</li>
+<a href="http://rmarkdown.rstudio.com/flexdashboard/">Flex Dashboard</a>: <a href="https://rawgit.com/bhaskarvk/widgetframe/master/inst/examples/flexdashboard/dashboard.html">Demo</a>.</li>
 <li>
-<a href="rmarkdown.rstudio.com">RMarkdown</a> + <a href="yihui.name/knitr/">knitr</a>: Check out this <a href="https://rawgit.com/bhaskarvk/widgetframe/master/inst/examples/rmarkdown/knitr_example.html">Demo</a>.</li>
+<a href="rmarkdown.rstudio.com">RMarkdown</a> + <a href="yihui.name/knitr/">knitr</a>: <a href="https://rawgit.com/bhaskarvk/widgetframe/master/inst/examples/rmarkdown/knitr_example.html">Demo</a>.</li>
 <li>
-<a href="http://rmarkdown.rstudio.com/lesson-13.html">RMarkdown Website</a>: Check out this <a href="https://rawgit.com/bhaskarvk/widgetframe/master/inst/examples/rmarkdown-website/index.html">Demo</a>.</li>
+<a href="http://rmarkdown.rstudio.com/lesson-13.html">RMarkdown Website</a>: <a href="https://rawgit.com/bhaskarvk/widgetframe/master/inst/examples/rmarkdown-website/index.html">Demo</a>.</li>
 <li>
-<a href="https://slides.yihui.name/xaringan/">Xaringan Presentations</a>: Check out this <a href="https://rawgit.com/bhaskarvk/widgetframe/master/inst/examples/xaringan/widgetframe.html#1">Demo</a>.<br>(May also work with other RMarkdown + knitr based presentations.)</li>
+<a href="https://slides.yihui.name/xaringan/">Xaringan Presentations</a>: <a href="https://rawgit.com/bhaskarvk/widgetframe/master/inst/examples/xaringan/widgetframe.html#1">Demo</a>.<br>(May also work with other RMarkdown + knitr based presentations.)</li>
 <li>
-<a href="https://bookdown.org/">Bookdown</a> gitbook: Needs a Makefile, but works. Check out this <a href="https://rawgit.com/bhaskarvk/widgetframe/master/inst/examples/bookdown/book/index.html">Demo</a>.</li>
+<a href="https://bookdown.org/">Bookdown</a> gitbook: (Needs a Makefile for assembly). <a href="https://rawgit.com/bhaskarvk/widgetframe/master/inst/examples/bookdown/book/index.html">Demo</a>.</li>
 </ul>
 </li>
 </ul>
 <p><br></p>
 <ul>
-<li>Does Not (Yet) Work With
+<li>Does not (yet) work with
 <ul>
-<li>Shiny</li>
 <li>
 <a href="https://github.com/rstudio/blogdown/">blogdown</a>: See <a href="https://github.com/rstudio/blogdown/issues/38">issue#38</a>
 </li>
+<li>Shiny: Probably never will.</li>
 </ul>
 </li>
 </ul>
@@ -102,6 +103,9 @@
 <div id="installation" class="section level3">
 <h3 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h3>
+<p>Avaliable on <a href="https://cran.rstudio.com/web/packages/widgetframe/">CRAN</a> and can be installed using …</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">'widgetframe'</span>)</code></pre></div>
+<p>Or install the dev version from Github using <code>devtools</code> …</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(devtools)) {
   <span class="kw">install.packages</span>(<span class="st">'devtools'</span>)
 }
@@ -113,18 +117,17 @@ devtools<span class="op">::</span><span class="kw">install_github</span>(<span c
 <div id="frameablewidget-function-" class="section level4">
 <h4 class="hasAnchor">
 <a href="#frameablewidget-function-" class="anchor"></a><code>frameableWidget</code> function.</h4>
-<p>The <code>frameableWidget</code> function should be used when you need a HTML which can be embedded in a CMS system like WordPress/blogger or a static HTML website using the <a href="http://blog.apps.npr.org/pym.js/">Pymjs</a> library.</p>
+<p>The <code>frameableWidget</code> function should be used when you need a HTML which can be embedded in an external CMS like WordPress or Blogger, or a static HTML website.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(leaflet)
 <span class="kw">library</span>(widgetframe)
 l &lt;-<span class="st"> </span><span class="kw">leaflet</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">addTiles</span>()
 htmlwidgets<span class="op">::</span><span class="kw">saveWidget</span>(<span class="kw"><a href="../reference/frameableWidget.html">frameableWidget</a></span>(l),<span class="st">'leaflet.html'</span>)</code></pre></div>
-<p>The resulting leaflet.html contains the necessary Pym.js Child initialization code and will work inside a regular iFrame or better yet a Pym.js responsive iFrame. It is expected that the site which is going to embed this widget’s content has the necessary Pymjs Parent initialization code as described <a href="http://blog.apps.npr.org/pym.js/">here</a>.</p>
+<p>The resulting <code>leaflet.html</code> file contains the necessary Pym.js Child initialization code and will work inside a regular iFrame or better yet a Pym.js responsive iFrame. It is expected that the site which is going to embed this widget’s content has the necessary Pymjs Parent initialization code as described <a href="http://blog.apps.npr.org/pym.js/">here</a>. The HTML dependencies of the widget (CSS/JS files) will be either inlined or kept external depending on the <code>seflcontained</code> argument to <code>saveWidget</code>.</p>
 </div>
 <div id="framewidget-function" class="section level4">
 <h4 class="hasAnchor">
 <a href="#framewidget-function" class="anchor"></a><code>frameWidget</code> function</h4>
-<p><code>frameWidget</code> function takes an existing htmlwidget as an argument and returns a new htmlwidget which when rendered, wraps the input htmlwdiget inside a responsive iFrame. This function can be used to knit htmlwidgets such that they are unaffected by the parent HTML file’s CSS. This could be useful in <a href="https://bookdown.org/">bookdown</a> or <a href="http://rmarkdown.rstudio.com/rmarkdown_websites.html">R Markdown Websites</a> to embed widgets such that they are unaffected by the site’s global CSS/JS.</p>
-<p>You can use <code>widgetFrame</code> inside your R Markdowns as shown below.</p>
+<p><code>frameWidget</code> function takes an existing <code>htmlwidgets</code> instance such as <code>leaflet</code> or <code>DT</code> etc., wraps it and returns a new <code>htmlwidgets</code> instance, which when rendered, displays the input wrapped <code>htmlwdigets</code> instance inside a responsive iFrame. This function can be used to knit htmlwidgets such that they are unaffected by the parent HTML file’s CSS. This could be useful in <a href="https://bookdown.org/">bookdown</a> or <a href="http://rmarkdown.rstudio.com/rmarkdown_websites.html">R Markdown Websites</a> to embed widgets such that they are unaffected by the site’s global CSS/JS.</p>
 <pre><code>```{r}
 library(leaflet)
 library(widgetframe)
@@ -137,6 +140,7 @@ ts &lt;- dygraph(nhtemp, main = “New Haven Temperatures”,
               height=250, width=‘95%’) 
 frameWidget(ts)
 ```</code></pre>
+<p>To know more about how <code>widgetframe</code> and <code>knitr</code>/<code>rmarkdown</code> work together, see the <a href="%60widgetframe%60%20and%20%60knitr%60">widgetframe_and_knitr.html</a> vignette.</p>
 </div>
 </div>
 </div>

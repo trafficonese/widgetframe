@@ -8,3 +8,4 @@ inst/examples
 ^cran-comments\.md$
 ^README\.Rmd$
 ^README\.md$
+^_pkgdown.yaml$

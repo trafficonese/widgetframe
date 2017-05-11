@@ -12,12 +12,11 @@ knit_print.widgetframe <- function(x, ..., options = NULL) {
   }
 
   # Should the widget be self_contained HTML i.e. deps inlined?
-  # Set this to false if the output document has self_contained = FALSE
-  selfContained <- TRUE
+  selfContained <- FALSE
 
   if (!is.null(options) && !is.null(options$widgetframe_self_contained) &&
-     options$widgetframe_self_contained == FALSE) {
-    selfContained <- FALSE
+     options$widgetframe_self_contained == TRUE) {
+    selfContained <- TRUE
   }
 
   # Should dependencies of widgets of different types be isolated?

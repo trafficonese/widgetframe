@@ -83,7 +83,8 @@
     </div>
 
     
-    <p>Similar to <code><a href='http://www.rdocumentation.org/packages/htmlwidgets/topics/saveWidget'>saveWidget</a>()</code> with the addition that both the parent widget and the enclosed child widget are saved to two different HTML files.</p>
+    <p>Similar to <code><a href='http://www.rdocumentation.org/packages/htmlwidgets/topics/saveWidget'>saveWidget</a>()</code> with the addition
+ that both the parent widget and the enclosed child widget are saved to two different HTML files.</p>
     
 
     <pre><span class='fu'>saveWidgetframe</span>(<span class='no'>widget</span>, <span class='no'>file</span>, <span class='kw'>selfcontained</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>libdir</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
@@ -98,13 +99,15 @@
     </tr>
     <tr>
       <th>file</th>
-      <td><p>File to save  the parent widget into. The child widget will be saved to `basename(file)_widget/index.html`.</p></td>
+      <td><p>File to save  the parent widget into. The child widget will be saved to
+`basename(file)_widget/index.html`.</p></td>
     </tr>
     <tr>
       <th>selfcontained</th>
-      <td><p>Whether to save the parent and child HTMLs as a single self-contained files. WARNING: Setting this option to true will still result in two HTMLs, one for the parent and another for the child widget.
-(with external resources base64 encoded) or files with external resources
-placed in an adjacent directory.</p></td>
+      <td><p>Whether to save the parent and child HTMLs as a single self-contained files.
+WARNING: Setting this option to true will still result in two HTMLs, one for
+the parent and another for the child widget (with external resources base64 encoded),
+ or files with external resources placed in an adjacent directory.</p></td>
     </tr>
     <tr>
       <th>libdir</th>
