@@ -36,7 +36,15 @@ This package provides two functions `frameableWidget`, and `frameWidget`. The `f
 
 ### Installation
 
-```{r, eval=FALSE}
+Release version
+
+```{r cran, eval=FALSE}
+install.packages('widgetframe')
+```
+
+OR development version
+
+```{r github, eval=FALSE}
 if(!require(devtools)) {
   install.packages('devtools')
 }

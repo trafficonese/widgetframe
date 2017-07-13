@@ -1,7 +1,7 @@
 Package: widgetframe
 Type: Package
 Title: 'Htmlwidgets' in Responsive 'iframes'
-Version: 0.2.0
+Version: 0.2.9000
 Authors@R: c(
     person("Bhaskar", "Karambelkar", email = "bhaskarvk@gmail.com", role = c("aut", "cre"))
     )
@@ -27,7 +27,7 @@ Imports:
     utils,
     tools
 RoxygenNote: 6.0.1
-URL: https://github.com/bhaskarvk/widgetframe
+URL: https://github.com/bhaskarvk/widgetframe, https://bhaskarvk.github.io/widgetframe/
 BugReports: https://github.com/bhaskarvk/widgetframe/issues
 Suggests: knitr,
     rmarkdown
