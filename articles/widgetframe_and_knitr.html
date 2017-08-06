@@ -78,7 +78,7 @@
       <h1>widgetframe and knitr</h1>
                         <h4 class="author">Bhaskar V. Karambelkar</h4>
             
-            <h4 class="date">2017-07-13</h4>
+            <h4 class="date">2017-08-06</h4>
           </div>
 
     
@@ -160,7 +160,7 @@
 <h3 class="hasAnchor">
 <a href="#widgetframe_widgets_dir" class="anchor"></a>widgetframe_widgets_dir</h3>
 <p>This option, if provided, determines where the HTML code for the wrapped <code>htmlwidgets</code> instance is written. Before discussing more we should note that <code>knitr_print.htmlwidgets()</code> never actually creates any files/directories or touches the file-system in any way. It merely returns a R list which then used by the output format to embed the widget’s HTML (and dependencies) in the final document. However, <code>knitr_print.widgetframe()</code> does create HTML file/s and dependencies directories for the wrapped widget. It needs to, so that the final document can embed the widget’s HTML which is saved separately, inside an iframe. This may not be important to know from a user perspective but a must know, if you want to extend or contribute to <code>widgetframe</code>.</p>
-<p>For almost all output formats except <code>bookdown</code>, this option should not be set and it will default to <code>file.path(dirname(knitr::opts_chunk$get('fig.path')),'widgets')</code>. That is a <code>widgets</code> directory inside the parent directory of <code>knitr::opts_chunk$get('fig.path')</code>. This is done this way because as noted <code>knitr_print</code> has no way of knowing the arguments of the output format including the final destination directory of the document. However it does have access to the <code>fig.path</code> knitr chunk option. Refer to <a href="https://github.com/yihui/knitr/issues/1390">this</a> Github issue for a discussion around this. See the <code>bookdown</code> section below for a use case where this value needs to be explicitly set.</p>
+<p>For almost all output formats except <code>bookdown</code>, this option should not be set and it will default to <code>file.path(knitr::opts_chunk$get('fig.path'),'widgets')</code>. That is a <code>widgets</code> directory inside the directory <code>knitr::opts_chunk$get('fig.path')</code>. This is done this way because as noted <code>knitr_print</code> has no way of knowing the arguments of the output format including the final destination directory of the document. However it does have access to the <code>fig.path</code> knitr chunk option. Refer to <a href="https://github.com/yihui/knitr/issues/1390">this</a> Github issue for a discussion around this. See the <code>bookdown</code> section below for a use case where this value needs to be explicitly set.</p>
 </div>
 <div id="chunk-options-and-output" class="section level3">
 <h3 class="hasAnchor">
@@ -223,14 +223,14 @@
 </tbody>
 </table>
 <p>†: Default Value.</p>
-<p>The location of the <code>widgets</code> directory is alongside wherever <code>knitr::opts_chunk$get('fig.path')</code> points too. However if <code>widgetframe_widgets_dir</code> is set then replace the <code>widgets</code> directory in the output column with the value of this option, and this path is then resolved relative to the current working directory (<code>getwd()</code>) while knitting.</p>
+<p>By default the widget HTML + dependencies (JS/CSS files) are located inside <code>widgets</code> directory, which is created inside wherever <code>knitr::opts_chunk$get('fig.path')</code> points too. However if <code>widgetframe_widgets_dir</code> is set then the widget HTML + dependencies are placed inside a directory whose name is the value of this option, and the path is resolved relative to the current working directory (<code>getwd()</code>) while knitting.</p>
 </div>
 </div>
 <div id="widgetframe-and-bookdown" class="section level2">
 <h2 class="hasAnchor">
 <a href="#widgetframe-and-bookdown" class="anchor"></a><code>widgetframe</code> and <code>bookdown</code>
 </h2>
-<p>For the <a href="https://bookdown.org/home/getting-started.html"><code>bookdown</code></a> output format, we need some additional steps to correctly use <code>widgetframe</code>s. This section describes those steps.</p>
+<p>For the <a href="https://bookdown.org/home/getting-started.html">bookdown</a> output format, we need some additional steps to correctly use <code>widgetframe</code>s. This section describes those steps.</p>
 <ol style="list-style-type: decimal">
 <li><p>The default output directory of the <code>bookdown</code> book is <code>_book</code>, which can be configured via <code>_bookdown.yml</code> file.</p></li>
 <li><p>For the <code><a href="http://www.rdocumentation.org/packages/bookdown/topics/gitbook">bookdown::gitbook</a></code> format we need to explicitly set the <code>widgetframe_widgets_dir</code> to some value (e.g. ‘widgets’), so that the embedded widgets HTML code is saved in this directory instead of the default.</p></li>
