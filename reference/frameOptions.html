@@ -106,7 +106,7 @@ In addition also check out the <a href='https://developer.mozilla.org/en-US/docs
     
 
     <pre><span class='fu'>frameOptions</span>(<span class='kw'>xdomain</span> <span class='kw'>=</span> <span class='st'>"*"</span>, <span class='kw'>title</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>allowfullscreen</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>sandbox</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+  <span class='kw'>allowfullscreen</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>sandbox</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>lazyload</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -134,6 +134,10 @@ In addition also check out the <a href='https://developer.mozilla.org/en-US/docs
     <tr>
       <th>sandbox</th>
       <td><p>If passed it will be assigned to the iframe sandbox attribute.</p></td>
+    </tr>
+    <tr>
+      <th>lazyload</th>
+      <td><p>If TRUE the child widget is lazy loaded using <a href='http://dinbror.dk/blog/blazy/?ref=github#iframe'>bLazy.js</a>.</p></td>
     </tr>
     </table>
     
