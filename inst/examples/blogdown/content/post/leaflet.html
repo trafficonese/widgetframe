@@ -1,0 +1,33 @@
+---
+title: "leaflet + widgeframe"
+author: "Bhaskar V. Karambelkar"
+date: 2017-08-06T11:45:00-05:00
+categories: ["widgetframe"]
+tags: ["leaflet"]
+---
+
+<script src="/rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="/rmarkdown-libs/pymjs/pym.v1.min.js"></script>
+<script src="/rmarkdown-libs/widgetframe-binding/widgetframe.js"></script>
+
+
+<p>The two examples below show how to properly embed a <code>leaflet</code> widget inside a blog post using the <code>widgetframe</code> package.</p>
+<div id="leaflet-01" class="section level2">
+<h2>Leaflet 01</h2>
+<pre class="r"><code>library(leaflet)
+library(widgetframe)
+## Loading required package: htmlwidgets
+l &lt;- leaflet() %&gt;% addTiles() %&gt;% setView(0,0,2)
+frameWidget(l, height = &#39;400&#39;)</code></pre>
+<div id="htmlwidget-1" style="width:100%;height:400px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"url":"/post/leaflet_files/figure-html//widgets/widget_leaflet-01.html","options":{"xdomain":"*","allowfullscreen":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="leaflet-02" class="section level2">
+<h2>Leaflet 02</h2>
+<pre class="r"><code>library(leaflet)
+suppressPackageStartupMessages(library(widgetframe))
+l &lt;- leaflet() %&gt;% addProviderTiles(providers$CartoDB.DarkMatter) %&gt;% setView(0,0,2)
+frameWidget(l, height = &#39;300&#39;)</code></pre>
+<div id="htmlwidget-2" style="width:100%;height:300px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2">{"x":{"url":"/post/leaflet_files/figure-html//widgets/widget_leaflet-02.html","options":{"xdomain":"*","allowfullscreen":false}},"evals":[],"jsHooks":[]}</script>
+</div>

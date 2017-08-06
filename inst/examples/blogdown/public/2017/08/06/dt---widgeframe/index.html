@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.25.1" />
+
+
+<title>DT &#43; widgeframe - widgetframe &#43; blogdown</title>
+<meta property="og:title" content="DT &#43; widgeframe - widgetframe &#43; blogdown">
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.11.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="../../../../css/fonts.css" media="all">
+<link rel="stylesheet" href="../../../../css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="../../../../" class="nav-logo">
+    <img src="../../../../images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="../../../../about/">About</a></li>
+    
+    <li><a href="https://github.com/bhaskarvk/widgetframe">GitHub</a></li>
+    
+    <li><a href="https://twitter.com/bhaskar_vk">Twitter</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">1 min read</span>
+    
+
+    <h1 class="article-title">DT &#43; widgeframe</h1>
+
+    
+    <span class="article-date">2017/08/06</span>
+    
+
+    <div class="article-content">
+      <script src="../../../../rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="../../../../rmarkdown-libs/pymjs/pym.v1.min.js"></script>
+<script src="../../../../rmarkdown-libs/widgetframe-binding/widgetframe.js"></script>
+
+
+<p>The two examples below show how to properly embed a <code>DT</code> widget inside a blog post using the <code>widgetframe</code> package.</p>
+<div id="dt" class="section level2">
+<h2>DT</h2>
+<pre class="r"><code>library(DT)
+library(widgetframe)
+## Loading required package: htmlwidgets
+dt &lt;-  datatable(
+  head(iris, 20), 
+  options = list(
+     columnDefs = list(list(className = &#39;dt-center&#39;, targets = 5)),
+     pageLength = 5, lengthMenu = c(5, 10, 15, 20)),
+  fillContainer = T)
+
+frameWidget(dt, height = 350, width = &#39;95%&#39;)</code></pre>
+<div id="htmlwidget-1" style="width:95%;height:350px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"url":"/post/dt_files/figure-html//widgets/widget_dt-01.html","options":{"xdomain":"*","allowfullscreen":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="../../../../index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="../../../../images/hugo-logo.png" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  </body>
+</html>
+
