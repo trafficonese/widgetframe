@@ -9,7 +9,6 @@ output:
 
 ```{r setup, include=FALSE}
 library(flexdashboard)
-knitr::opts_chunk$set(widgetframe_self_contained = FALSE)
 ```
 
 Row {.tabset .tabset-fade}

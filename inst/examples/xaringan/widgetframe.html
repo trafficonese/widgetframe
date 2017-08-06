@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta name="author" content="Bhaskar Karambelkar" />
     <link href="widgetframe_files/remark-css-0.0.1/example.css" rel="stylesheet" />
-    <script src="widgetframe_files/htmlwidgets-0.8/htmlwidgets.js"></script>
+    <script src="widgetframe_files/htmlwidgets-0.9/htmlwidgets.js"></script>
     <script src="widgetframe_files/pymjs-1.2.0/pym.v1.min.js"></script>
-    <script src="widgetframe_files/widgetframe-binding-0.2.0/widgetframe.js"></script>
+    <script src="widgetframe_files/widgetframe-binding-0.2.9000/widgetframe.js"></script>
     <link rel="stylesheet" href="style.css" type="text/css" />
   </head>
   <body>
@@ -40,8 +40,8 @@ l &lt;- leaflet() %&gt;% addTiles() %&gt;% setView(0,0,2)
 frameWidget(l, height = '300')
 ```
 
-<div id="htmlwidget-91b294d23c1aeaf6a72b" style="width:100%;height:300px;" class="widgetframe html-widget"></div>
-<script type="application/json" data-for="htmlwidget-91b294d23c1aeaf6a72b">{"x":{"url":"widgetframe_files/widgets/widget_leaflet-01.html","options":{"xdomain":"*","allowfullscreen":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-82d0bbdc18f4f38197f9" style="width:100%;height:300px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-82d0bbdc18f4f38197f9">{"x":{"url":"widgetframe_files/figure-html//widgets/widget_leaflet-01.html","options":{"xdomain":"*","allowfullscreen":false}},"evals":[],"jsHooks":[]}</script>
 
 ---
 
@@ -54,8 +54,8 @@ ts &lt;- dygraph(nhtemp, main = "New Haven Temperatures")
 frameWidget(ts, height = 300, width = '95%')
 ```
 
-<div id="htmlwidget-ba11d47a3b842c058e2c" style="width:95%;height:300px;" class="widgetframe html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ba11d47a3b842c058e2c">{"x":{"url":"widgetframe_files/widgets/widget_dygraph-01.html","options":{"xdomain":"*","allowfullscreen":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-da8429b8250d88b6f8b1" style="width:95%;height:300px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-da8429b8250d88b6f8b1">{"x":{"url":"widgetframe_files/figure-html//widgets/widget_dygraph-01.html","options":{"xdomain":"*","allowfullscreen":false}},"evals":[],"jsHooks":[]}</script>
 
 ---
 
@@ -74,8 +74,8 @@ dt &lt;-  datatable(
 frameWidget(dt, height = 350, width = '95%')
 ```
 
-<div id="htmlwidget-e87e3b99ddc2df2bbb49" style="width:95%;height:350px;" class="widgetframe html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e87e3b99ddc2df2bbb49">{"x":{"url":"widgetframe_files/widgets/widget_dt-01.html","options":{"xdomain":"*","allowfullscreen":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-63fdb8ddc4701fb1c752" style="width:95%;height:350px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-63fdb8ddc4701fb1c752">{"x":{"url":"widgetframe_files/figure-html//widgets/widget_dt-01.html","options":{"xdomain":"*","allowfullscreen":false}},"evals":[],"jsHooks":[]}</script>
     </textarea>
 <script src="libs/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
@@ -87,7 +87,7 @@ frameWidget(dt, height = 350, width = '95%')
 "click": false
 }
 });
-if (window.HTMLWidgets) slideshow.on('showSlide', function (slide) {setTimeout(function() {window.dispatchEvent(new Event('resize'));}, 100)});</script>
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {window.dispatchEvent(new Event('resize'));});</script>
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -101,7 +101,7 @@ MathJax.Hub.Config({
 (function () {
   var script = document.createElement('script');
   script.type = 'text/javascript';
-  script.src  = 'https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
   if (location.protocol !== 'file:' && /^https?:/.test(script.src))
     script.src  = script.src.replace(/^https?:/, '');
   document.getElementsByTagName('head')[0].appendChild(script);

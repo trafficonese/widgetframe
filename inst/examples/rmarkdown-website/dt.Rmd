@@ -5,7 +5,6 @@ author: "Bhaskar V. Karambelkar"
 
 ```{r, include=FALSE}
 knitr::opts_chunk$set(widgetframe_self_contained = FALSE)
-knitr::opts_chunk$set(widgetframe_widgetsdir = 'site_libs/widgets')
 ```
 
 # DT

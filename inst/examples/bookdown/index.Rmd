@@ -12,7 +12,6 @@ link-citations: yes
 # If you have new_session=yes in your _bookdown.yml file,
 # then you need to copy this block to each Rmd file.
 knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_chunk$set(widgetframe_self_contained = FALSE)
 knitr::opts_chunk$set(widgetframe_widgetsdir = 'widgets')
 ```
 
