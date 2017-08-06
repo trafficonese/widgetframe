@@ -1,3 +1,9 @@
+# widgetframe 0.3.0
+
+## Improvements
+
+* Now works with blogdown thanks to Yihui Xie!
+
 # widgetframe 0.2.0
 
 ## New Stuff
