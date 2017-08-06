@@ -5,7 +5,7 @@
 \title{Options for widget's iframe.}
 \usage{
 frameOptions(xdomain = "*", title = NULL, name = NULL, id = NULL,
-  allowfullscreen = FALSE, sandbox = NULL)
+  allowfullscreen = FALSE, sandbox = NULL, lazyload = FALSE)
 }
 \arguments{
 \item{xdomain}{xdomain to validate messages received.}
@@ -19,6 +19,8 @@ frameOptions(xdomain = "*", title = NULL, name = NULL, id = NULL,
 \item{allowfullscreen}{If TRUE it will set the iframe allowfullscreen attribute to true.}
 
 \item{sandbox}{If passed it will be assigned to the iframe sandbox attribute.}
+
+\item{lazyload}{If TRUE the child widget is lazy loaded using \href{http://dinbror.dk/blog/blazy/?ref=github#iframe}{bLazy.js}.}
 }
 \description{
 Taken from \href{http://blog.apps.npr.org/pym.js/api/pym.js/1.1.2/module-pym.Parent.html}{Pym.js Documentation}.

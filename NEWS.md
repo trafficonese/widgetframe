@@ -1,8 +1,13 @@
 # widgetframe 0.3.0
 
+## New Features
+
+* Now supports lazy loading of widget iframes.
+
 ## Improvements
 
 * Now works with blogdown thanks to Yihui Xie!
+* Upgraded to pym.js version 1.3.1
 
 # widgetframe 0.2.0
 

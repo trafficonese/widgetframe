@@ -22,10 +22,11 @@ addPymjsDependency <- function(widget) {
 #' @param id If passed it will be assigned to the iframe id attribute.
 #' @param allowfullscreen If TRUE it will set the iframe allowfullscreen attribute to true.
 #' @param sandbox If passed it will be assigned to the iframe sandbox attribute.
+#' @param lazyload If TRUE the child widget is lazy loaded using \href{http://dinbror.dk/blog/blazy/?ref=github#iframe}{bLazy.js}.
 #' @export
 frameOptions <- function(xdomain = '*', title=NULL, name=NULL,
                          id = NULL, allowfullscreen=FALSE,
-                         sandbox=NULL) {
+                         sandbox=NULL, lazyload = FALSE) {
   purrr::keep(
   list(
     xdomain = xdomain,
@@ -33,7 +34,8 @@ frameOptions <- function(xdomain = '*', title=NULL, name=NULL,
     name = name,
     id = id,
     allowfullscreen = allowfullscreen,
-    sandbox = sandbox
+    sandbox = sandbox,
+    lazyload = lazyload
   ), ~!is.null(.))
 }
 
@@ -165,7 +167,8 @@ frameWidget <- function(targetWidget, width = '100%', height = NULL, elementId =
     ), widget = targetWidget )
 
   # create widget
-  htmlwidgets::createWidget(
+  
+  widget <- htmlwidgets::createWidget(
     name = 'widgetframe',
     x = widgetData,
     width = width,
@@ -173,6 +176,13 @@ frameWidget <- function(targetWidget, width = '100%', height = NULL, elementId =
     package = 'widgetframe',
     elementId = elementId
   )
+
+  if(!is.null(options) && options$lazyload) {
+    widget <- widget %>%
+      htmlwidgets::appendContent(htmltools::tags$script("if(!window.bLazy){window.bLazy = new Blazy();}"))
+  }
+
+  widget
 }
 
 #' @export
