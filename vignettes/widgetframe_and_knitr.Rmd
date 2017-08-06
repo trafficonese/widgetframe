@@ -87,7 +87,7 @@ There is very little reason to set this option to `FALSE`.
 
 This option, if provided, determines where the HTML code for the wrapped `htmlwidgets` instance is written. Before discussing more we should note that `knitr_print.htmlwidgets()` never actually creates any files/directories or touches the file-system in any way. It merely returns a R list which then used by the output format to embed the widget's HTML (and dependencies) in the final document. However, `knitr_print.widgetframe()` does create HTML file/s and dependencies directories for the wrapped widget. It needs to, so that the final document can embed the widget's HTML which is saved separately, inside an iframe. This may not be important to know from a user perspective but a must know, if you want to extend or contribute to `widgetframe`.
 
-For almost all output formats except `bookdown`, this option should not be set and it will default to `file.path(dirname(knitr::opts_chunk$get('fig.path')),'widgets')`. That is a `widgets` directory inside the parent directory of `knitr::opts_chunk$get('fig.path')`. This is done this way because as noted `knitr_print` has no way of knowing the arguments of the output format including the final destination directory of the document. However it does have access to the `fig.path` knitr chunk option. Refer to [this](https://github.com/yihui/knitr/issues/1390) Github issue for a discussion around this.  See the `bookdown` section below for a use case where this value needs to be explicitly set.
+For almost all output formats except `bookdown`, this option should not be set and it will default to `file.path(knitr::opts_chunk$get('fig.path'),'widgets')`. That is a `widgets` directory inside the directory `knitr::opts_chunk$get('fig.path')`. This is done this way because as noted `knitr_print` has no way of knowing the arguments of the output format including the final destination directory of the document. However it does have access to the `fig.path` knitr chunk option. Refer to [this](https://github.com/yihui/knitr/issues/1390) Github issue for a discussion around this.  See the `bookdown` section below for a use case where this value needs to be explicitly set.
 
 ### Chunk Options and Output
 
@@ -134,11 +134,11 @@ I've ommitted the `widgetframe_` prefix for each of the 3 options below to conse
 
 †: Default Value.
 
-The location of the `widgets` directory is alongside wherever `knitr::opts_chunk$get('fig.path')` points too. However if `widgetframe_widgets_dir` is set then replace the `widgets` directory in the output column with the value of this option, and this path is then resolved relative to the current working directory (`getwd()`) while knitting.
+By default the widget HTML + dependencies (JS/CSS files) are located inside `widgets` directory, which is created inside wherever `knitr::opts_chunk$get('fig.path')` points too. However if `widgetframe_widgets_dir` is set then the widget HTML + dependencies are placed inside a directory whose name is the value of this option, and the path is resolved relative to the current working directory (`getwd()`) while knitting.
 
 ## `widgetframe` and `bookdown`
 
-For the [`bookdown`](https://bookdown.org/home/getting-started.html) output format, we need some additional steps to correctly use `widgetframe`s. This section describes those steps.
+For the [bookdown](https://bookdown.org/home/getting-started.html) output format, we need some additional steps to correctly use `widgetframe`s. This section describes those steps.
 
 1. The default output directory of the `bookdown` book is `_book`, which can be configured via `_bookdown.yml` file.
 

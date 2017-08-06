@@ -24,11 +24,11 @@ For each of the document type below you can find fully working example code in t
     * [RMarkdown Website](http://rmarkdown.rstudio.com/lesson-13.html):  [Demo](https://rawgit.com/bhaskarvk/widgetframe/master/inst/examples/rmarkdown-website/site/index.html).
     * [Xaringan Presentations](https://slides.yihui.name/xaringan/):  [Demo](https://rawgit.com/bhaskarvk/widgetframe/master/inst/examples/xaringan/widgetframe.html#1).<br/>(May also work with other RMarkdown + knitr based presentations.)
     * [Bookdown](https://bookdown.org/) gitbook: (Needs a Makefile for assembly).  [Demo](https://rawgit.com/bhaskarvk/widgetframe/master/inst/examples/bookdown/book/index.html).
+    * [blogdown](https://github.com/rstudio/blogdown/):  [Demo](https://rawgit.com/bhaskarvk/widgetframe/master/inst/examples/blogdown/public/index.html).
 
 <br/>
 
 - Does not (yet) work with
-    * [blogdown](https://github.com/rstudio/blogdown/): See [issue#38](https://github.com/rstudio/blogdown/issues/38)
     * Shiny: Probably never will.
 
 ### Installation

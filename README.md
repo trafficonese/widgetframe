@@ -1,12 +1,12 @@
 
-[![Project Status: Active – The project is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active) [![Last-changedate](https://img.shields.io/badge/last%20change-2017--07--13-green.svg)](/commits/master) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![keybase verified](https://img.shields.io/badge/keybase-verified-brightgreen.svg)](https://gist.github.com/bhaskarvk/46fbf2ba7b5713151d7e) [![Travis-CI Build Status](https://travis-ci.org/bhaskarvk/widgetframe.svg?branch=master)](https://travis-ci.org/bhaskarvk/widgetframe) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/bhaskarvk/widgetframe?branch=master&svg=true)](https://ci.appveyor.com/project/bhaskarvk/widgetframe) [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.1.0-6666ff.svg)](https://cran.r-project.org/) [![packageversion](https://img.shields.io/badge/Package%20version-0.2.9000-orange.svg?style=flat-square)](commits/master) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/widgetframe)](https://cran.r-project.org/package=widgetframe) [![](http://cranlogs.r-pkg.org/badges/grand-total/widgetframe)](http://cran.rstudio.com/web/packages/widgetframe/index.html)
+[![Project Status: Active – The project is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active) [![Last-changedate](https://img.shields.io/badge/last%20change-2017--08--06-green.svg)](/commits/master) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![keybase verified](https://img.shields.io/badge/keybase-verified-brightgreen.svg)](https://gist.github.com/bhaskarvk/46fbf2ba7b5713151d7e) [![Travis-CI Build Status](https://travis-ci.org/bhaskarvk/widgetframe.svg?branch=master)](https://travis-ci.org/bhaskarvk/widgetframe) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/bhaskarvk/widgetframe?branch=master&svg=true)](https://ci.appveyor.com/project/bhaskarvk/widgetframe) [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.1.0-6666ff.svg)](https://cran.r-project.org/) [![packageversion](https://img.shields.io/badge/Package%20version-0.2.9000-orange.svg?style=flat-square)](commits/master) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/widgetframe)](https://cran.r-project.org/package=widgetframe) [![](http://cranlogs.r-pkg.org/badges/grand-total/widgetframe)](http://cran.rstudio.com/web/packages/widgetframe/index.html)
 
 widgetframe: htmlwidgets inside responsive iframes.
 ---------------------------------------------------
 
 The goal of widgetframe is to be able to embed widgets inside iframes using NPR's [Pymjs](http://blog.apps.npr.org/pym.js/) library for responsive iframes.
 
-This package provides two functions `frameableWidget`, and `frameWidget`. The `frameableWidget` is used to add extra code to a htmlwidget which allows is to be rendered inside a responsive iframe. The `frameWidget` returns a htmlwidget which displays content of another htmlwidget inside a responsive iframe.
+This package provides two functions `frameableWidget`, and `frameWidget`. The `frameableWidget` is used to add extra code to a htmlwidget which allows it to be rendered inside a responsive iframe. The `frameWidget` returns a htmlwidget which displays content of another htmlwidget inside a responsive iframe.
 
 ### Current Status
 
@@ -14,14 +14,14 @@ This package provides two functions `frameableWidget`, and `frameWidget`. The `f
     -   [Flex Dashboard](http://rmarkdown.rstudio.com/flexdashboard/): Check out this [Demo](https://rawgit.com/bhaskarvk/widgetframe/master/inst/examples/flexdashboard/dashboard.html).
     -   [RMarkdown](rmarkdown.rstudio.com) + [knitr](yihui.name/knitr/): Check out this [Demo](https://rawgit.com/bhaskarvk/widgetframe/master/inst/examples/rmarkdown/knitr_example.html).
     -   [RMarkdown Website](http://rmarkdown.rstudio.com/lesson-13.html): Check out this [Demo](https://rawgit.com/bhaskarvk/widgetframe/master/inst/examples/rmarkdown-website/site/index.html).
-    -   [Xaringan Presentations](https://slides.yihui.name/xaringan/): Check out this [Demo](https://rawgit.com/bhaskarvk/widgetframe/master/inst/examples/xaringan/widgetframe.html#1).<br/>(May also work with other RMarkdown + knitr based presentations.)
+    -   [Xaringan Presentations](https://slides.yihui.name/xaringan/): Check out this [Demo](https://rawgit.com/bhaskarvk/widgetframe/master/inst/examples/xaringan/widgetframe.html#1).<br/>`widgetframe` should also work with other RMarkdown + knitr based presentations.
     -   [Bookdown](https://bookdown.org/) gitbook: Needs a Makefile, but works. Check out this [Demo](https://rawgit.com/bhaskarvk/widgetframe/master/inst/examples/bookdown/book/index.html).
+    -   [blogdown](https://github.com/rstudio/blogdown/): Check out this [Demo](https://rawgit.com/bhaskarvk/widgetframe/master/inst/examples/blogdown/public/index.html).
 
 <br/>
 
 -   Does Not (Yet) Work With
     -   Shiny
-    -   [blogdown](https://github.com/rstudio/blogdown/): See [issue\#38](https://github.com/rstudio/blogdown/issues/38)
 
 ### Installation
 
