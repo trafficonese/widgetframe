@@ -1,0 +1,26 @@
+---
+title: "Chapter 1"
+author: "Bhaskar V. Karambelkar"
+---
+
+# (PART) Widgets in iFrames {-}
+
+# Leaflet
+
+## Example 1
+
+```{r leaflet-01}
+library(leaflet)
+library(widgetframe)
+l <- leaflet() %>% addTiles() %>% setView(0,0,2)
+frameWidget(l, height = '400')
+```
+
+## Example 2
+
+```{r leaflet-02}
+l <- leaflet() %>%
+  addProviderTiles(providers$CartoDB.DarkMatter) %>%
+  setView(0,0,2)
+frameWidget(l, height = '400')
+```

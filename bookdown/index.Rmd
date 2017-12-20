@@ -1,0 +1,20 @@
+---
+title: "Demo of widgetframes in bookdown"
+author: "Bhaskar V. Karambelkar"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+output: bookdown::gitbook
+link-citations: yes
+---
+
+```{r setup, include=FALSE}
+# If you have new_session=yes in your _bookdown.yml file,
+# then you need to copy this block to each Rmd file.
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(widgetframe_widgets_dir = 'widgets')
+```
+
+# Preface {-}
+
+Just a demo book to show how `widgetframe` package can be used along with `bookdown` for embedding widgets correctly (without having their CSS rules messed up) in gitbooks.

@@ -1,0 +1,60 @@
+---
+title: "widgetframes"
+output: 
+  flexdashboard::flex_dashboard:
+    self_contained: FALSE
+    orientation: rows
+---
+
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+```
+
+Row {.tabset .tabset-fade}
+-----------------------------------------------------------------------
+
+### Leaflet 01
+
+```{r leaflet-01}
+library(leaflet)
+suppressPackageStartupMessages(library(widgetframe))
+l <- leaflet() %>% addTiles() %>% setView(0,0,2)
+frameWidget(l, height = '300')
+```
+
+### Leaflet 02
+
+```{r leaflet-02}
+library(leaflet)
+suppressPackageStartupMessages(library(widgetframe))
+l <- leaflet() %>% addProviderTiles(providers$CartoDB.DarkMatter) %>% setView(0,0,2)
+frameWidget(l, height = '300')
+```
+
+
+Row {.tabset .tabset-fade}
+-----------------------------------------------------------------------
+
+### dygraph
+
+```{r dygraph-01}
+library(dygraphs)
+ts <- dygraph(nhtemp, main = "New Haven Temperatures")
+frameWidget(ts, height = 300, width = '95%')
+```
+
+### DT
+
+```{r dt-01}
+library(DT)
+dt <-  datatable(
+  head(iris, 20), 
+  options = list(
+     columnDefs = list(list(className = 'dt-center', targets = 5)),
+     pageLength = 5, lengthMenu = c(5, 10, 15, 20)),
+  fillContainer = F)
+
+frameWidget(dt, width = '95%')
+```
+

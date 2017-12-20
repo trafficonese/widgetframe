@@ -1,0 +1,17 @@
+---
+title: "dygraph"
+author: "Bhaskar V. Karambelkar"
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(widgetframe_self_contained = FALSE)
+```
+
+# Dygraph
+
+```{r dygraph-01}
+library(dygraphs)
+library(widgetframe)
+ts <- dygraph(nhtemp, main = "New Haven Temperatures")
+frameWidget(ts, height = 350, width = '95%')
+```
