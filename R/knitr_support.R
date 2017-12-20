@@ -30,12 +30,13 @@ knit_print.widgetframe <- function(x, ..., options = NULL) {
 
   # Hack-ish way to get dependencies folder for the parent document.
   # See https://github.com/yihui/knitr/issues/1390
+
   defWidgetsDir <- file.path(knitr::opts_chunk$get('fig.path'), 'widgets')
 
   widgetsDir <- NULL
 
-  if (!is.null(options) && !is.null(options$widgetframe_widgetsdir)) {
-    widgetsDir <- options$widgetframe_widgetsdir
+  if (!is.null(options) && !is.null(options$widgetframe_widgets_dir)) {
+    widgetsDir <- options$widgetframe_widgets_dir
   }
 
   # We need a widgetsdir if not self_contained

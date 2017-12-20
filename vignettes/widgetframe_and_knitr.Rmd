@@ -23,7 +23,7 @@ Let's start with the simplest of HTML output format `rmarkdown::html_document()`
 The `self_contained` (default = `TRUE`), and the `lib_dir` (default = name of document + `_files`)
 arguments of this output format dictate how `htmlwidgets` instances appear in the final document. If `self_contained` is `TRUE` then the HTML dependencies (JS/CSS) are all inlined and the result is just one single HTML document. Naturally this document is quite large in size due to the dependencies being inlined. If `self_contained` is `FALSE` then the HTML dependencies are kept in a separate directory determined by the `lib_dir` argument. Other HTML based formats like `bookdown`, `flexdashboard` etc. too have similar arguments. This is not surprising as they tend to extend `rmarkdown::html_document`.
 
-### Potetial Issues
+### Potential Issues
 
 Unless you are working on small one-off Rmd document, it is never a good idea to have `self_contained` set to its default value `TRUE`. It results in large HTML documents which are slow to load in the browser. Secondly by inlining dependencies you lose the ability to share common dependencies across different HTMLs. Lastly you also limit the browser's ability to cache HTML dependencies across sessions.
 
@@ -70,17 +70,18 @@ While using `wigdetframe` is as simple as `widgetframe::frameWidget(some_other_w
 
 ### widgetfram_self_contained
 
-This option is similar to the `selfcontained` argument of the `rmarkdown::html_document()` output format. The reason we need a separate chucnk option is because ...
+This option is similar to the `self_contained` argument of the `rmarkdown::html_document()` output format. The reason we need a separate chucnk option is because ...
 
 1.  As explained above `knitr_print.widgetframe()` has no way of knowing what the output format is and what arguments were passed to it. 
 
-2.  Unlike `selfcontained` which defaults to `TRUE`, `widgetframe_self_contained` defaults to `FALSE`. That is to say that by default when using `widgetframe` the dependencies of the target `htmlwidgets` instance are kept in a separate directory.
+2.  Unlike `self_contained` which defaults to `TRUE`, `widgetframe_self_contained` defaults to `FALSE`. That is to say that by default when using `widgetframe` the dependencies of the target `htmlwidgets` instance are kept in a separate directory.
 
 There is very little reason to set this option to `TRUE`. If however you do set it to `TRUE` the HTML file for the wrapped widget will have its dependencies inlined, resulting in a single large HTML file. Note that this is not the same as your final output HTML. This is just the HTML for the widget which is displayed inside an iframe in the final HTML document.
+Wheter the final HTML document has inlined dependencies depends on the `self_contaied` argument of your output format e.g. `rmarkdown::html_document()`.
 
 ### widgetframe_isolate_widgets
 
-Defaults to `TRUE`, and when `TRUE`, isolates HTML dependencies (CSS/JS) of `htmlwidgets` of different types. This avoids compatibility issues when `htmlwidgets` of different types depend on the same dependency(ies) but on different versions. For example if you are using some `leaflet`, and some `DT` `htmlwdigets` in your document (doesn't matter how many), then the dependencies of `leaflet` widgets will be stored separately from dependencies of `DT` widgets and any other widget other than `leaflet`. So `leaflet` can depend on version 'X' of `jQuery` and `DT` can depend on version 'Y' and both will work correctly.  Do note that multiple widgets of the same type will share the same set of dependencies in order to avoid unnecessary duplication. 
+Defaults to `TRUE`, and when `TRUE`, isolates HTML dependencies (CSS/JS) of `htmlwidgets` of different types. This avoids compatibility issues when `htmlwidgets` of different types depend on the same dependency(ies) but on different versions. For example if you are using some `leaflet`, and some `DT` `htmlwdigets` in your document (doesn't matter how many), then the dependencies of `leaflet` widgets will be stored separately from dependencies of `DT` widgets and any other widget other than `leaflet`. So `leaflet` can depend on version 'X' of `jQuery` and `DT` can depend on version 'Y' and both will work correctly.  Note that multiple widgets of the same type will share the same set of dependencies in order to avoid unnecessary duplication. 
 There is very little reason to set this option to `FALSE`.
 
 ### widgetframe_widgets_dir
@@ -88,6 +89,8 @@ There is very little reason to set this option to `FALSE`.
 This option, if provided, determines where the HTML code for the wrapped `htmlwidgets` instance is written. Before discussing more we should note that `knitr_print.htmlwidgets()` never actually creates any files/directories or touches the file-system in any way. It merely returns a R list which then used by the output format to embed the widget's HTML (and dependencies) in the final document. However, `knitr_print.widgetframe()` does create HTML file/s and dependencies directories for the wrapped widget. It needs to, so that the final document can embed the widget's HTML which is saved separately, inside an iframe. This may not be important to know from a user perspective but a must know, if you want to extend or contribute to `widgetframe`.
 
 For almost all output formats except `bookdown`, this option should not be set and it will default to `file.path(knitr::opts_chunk$get('fig.path'),'widgets')`. That is a `widgets` directory inside the directory `knitr::opts_chunk$get('fig.path')`. This is done this way because as noted `knitr_print` has no way of knowing the arguments of the output format including the final destination directory of the document. However it does have access to the `fig.path` knitr chunk option. Refer to [this](https://github.com/yihui/knitr/issues/1390) Github issue for a discussion around this.  See the `bookdown` section below for a use case where this value needs to be explicitly set.
+
+Another scenario where you may need to set this option is when your RMarkdown output format has `self_contained=TRUE` (Note: This is the `self_contained` argument of your HTML output format e.g. `rmarkdown::html_document` and not the `widgetframe_self_contained` chunk argument described above).
 
 ### Chunk Options and Output
 

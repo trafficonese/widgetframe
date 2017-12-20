@@ -23,6 +23,6 @@ frameOptions(xdomain = "*", title = NULL, name = NULL, id = NULL,
 \item{lazyload}{If TRUE the child widget is lazy loaded using \href{http://dinbror.dk/blog/blazy/?ref=github#iframe}{bLazy.js}.}
 }
 \description{
-Taken from \href{http://blog.apps.npr.org/pym.js/api/pym.js/1.1.2/module-pym.Parent.html}{Pym.js Documentation}.
+Taken from \href{http://blog.apps.npr.org/pym.js/api/pym.js/1.3.1/module-pym.Parent.html}{Pym.js Documentation}.
 In addition also check out the \href{https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe}{iframe documentation}.
 }

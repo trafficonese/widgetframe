@@ -1,7 +1,7 @@
 pymjsDependency <- function() {
   list(
     htmltools::htmlDependency(
-      name = 'pymjs', version = '1.2.0',
+      name = 'pymjs', version = '1.3.2',
       src = system.file('htmlwidgets/pymjs', package = 'widgetframe'),
       script = c('pym.v1.min.js')
     )
@@ -9,12 +9,27 @@ pymjsDependency <- function() {
 }
 
 addPymjsDependency <- function(widget) {
-  widget$dependencies <- c(widget$dependencies, pymjsDependency())
+  widget$dependencies <- c(pymjsDependency(), widget$dependencies)
+  widget
+}
+
+blazyDependency <- function() {
+  list(
+    htmltools::htmlDependency(
+      name = 'blazy', version = '1.8.2',
+      src = system.file('htmlwidgets/blazy', package = 'widgetframe'),
+      script = c('blazy.min.js')
+    )
+  )
+}
+
+addBlazyDependency <- function(widget) {
+  widget$dependencies <- c(blazyDependency(), widget$dependencies)
   widget
 }
 
 #' Options for widget's iframe.
-#' @description Taken from \href{http://blog.apps.npr.org/pym.js/api/pym.js/1.1.2/module-pym.Parent.html}{Pym.js Documentation}.
+#' @description Taken from \href{http://blog.apps.npr.org/pym.js/api/pym.js/1.3.1/module-pym.Parent.html}{Pym.js Documentation}.
 #' In addition also check out the \href{https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe}{iframe documentation}.
 #' @param xdomain xdomain to validate messages received.
 #' @param title If passed it will be assigned to the iframe title attribute.
@@ -167,7 +182,7 @@ frameWidget <- function(targetWidget, width = '100%', height = NULL, elementId =
     ), widget = targetWidget )
 
   # create widget
-  
+
   widget <- htmlwidgets::createWidget(
     name = 'widgetframe',
     x = widgetData,
@@ -179,6 +194,7 @@ frameWidget <- function(targetWidget, width = '100%', height = NULL, elementId =
 
   if(!is.null(options) && options$lazyload) {
     widget <- widget %>%
+      addBlazyDependency() %>%
       htmlwidgets::appendContent(htmltools::tags$script("if(!window.bLazy){window.bLazy = new Blazy();}"))
   }
 

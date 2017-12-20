@@ -29,7 +29,8 @@ For each of the document type below you can find fully working example code in t
 <br/>
 
 - Does not (yet) work with
-    * Shiny: Probably never will.
+    * Shiny: See [Github Issue](https://github.com/bhaskarvk/widgetframe/issues/11)
+    * Crosstalk: See [Github Issue](https://github.com/bhaskarvk/widgetframe/issues/3)
 
 ### Installation
 
@@ -86,4 +87,4 @@ frameWidget(ts)
 ```
 ``` 
 
-To know more about how `widgetframe` and `knitr`/`rmarkdown` work together, see the [widgetframe_and_knitr.html](`widgetframe` and `knitr`) vignette.
+To know more about how `widgetframe` and `knitr`/`rmarkdown` work together, see the [`widgetframe` and `knitr`](widgetframe_and_knitr.html) vignette.
