@@ -78,7 +78,7 @@
       <h1>widgetframe and knitr</h1>
                         <h4 class="author">Bhaskar V. Karambelkar</h4>
             
-            <h4 class="date">2017-08-06</h4>
+            <h4 class="date">2017-12-19</h4>
           </div>
 
     
@@ -97,9 +97,9 @@
 </h2>
 <p>By default when knitting <code>htmlwidgets</code> the <code>htmlwidgets:::knit_print.htmlwidgets()</code> function (an internal function exposed as an S3 method) is called. The output of this call is a <code>list</code> containing the HTML code + a list of HTML dependencies (JS/CSS) required to render the widget. How this is then inserted into the final document depends on the output format. For this discussion we are going to limit to HTML based output formats because as noted above <code>widgetframe</code> is designed to work only for HTML based output formats.</p>
 <p>Let’s start with the simplest of HTML output format <code><a href="http://www.rdocumentation.org/packages/rmarkdown/topics/html_document">rmarkdown::html_document()</a></code>. The <code>self_contained</code> (default = <code>TRUE</code>), and the <code>lib_dir</code> (default = name of document + <code>_files</code>) arguments of this output format dictate how <code>htmlwidgets</code> instances appear in the final document. If <code>self_contained</code> is <code>TRUE</code> then the HTML dependencies (JS/CSS) are all inlined and the result is just one single HTML document. Naturally this document is quite large in size due to the dependencies being inlined. If <code>self_contained</code> is <code>FALSE</code> then the HTML dependencies are kept in a separate directory determined by the <code>lib_dir</code> argument. Other HTML based formats like <code>bookdown</code>, <code>flexdashboard</code> etc. too have similar arguments. This is not surprising as they tend to extend <code><a href="http://www.rdocumentation.org/packages/rmarkdown/topics/html_document">rmarkdown::html_document</a></code>.</p>
-<div id="potetial-issues" class="section level3">
+<div id="potential-issues" class="section level3">
 <h3 class="hasAnchor">
-<a href="#potetial-issues" class="anchor"></a>Potetial Issues</h3>
+<a href="#potential-issues" class="anchor"></a>Potential Issues</h3>
 <p>Unless you are working on small one-off Rmd document, it is never a good idea to have <code>self_contained</code> set to its default value <code>TRUE</code>. It results in large HTML documents which are slow to load in the browser. Secondly by inlining dependencies you lose the ability to share common dependencies across different HTMLs. Lastly you also limit the browser’s ability to cache HTML dependencies across sessions.</p>
 <p>Even if you were to externalize the dependencies by setting <code>sefl_contained=FALSE</code>, there are still two potential issues…</p>
 <ul>
@@ -144,23 +144,24 @@
 <div id="widgetfram_self_contained" class="section level3">
 <h3 class="hasAnchor">
 <a href="#widgetfram_self_contained" class="anchor"></a>widgetfram_self_contained</h3>
-<p>This option is similar to the <code>selfcontained</code> argument of the <code><a href="http://www.rdocumentation.org/packages/rmarkdown/topics/html_document">rmarkdown::html_document()</a></code> output format. The reason we need a separate chucnk option is because …</p>
+<p>This option is similar to the <code>self_contained</code> argument of the <code><a href="http://www.rdocumentation.org/packages/rmarkdown/topics/html_document">rmarkdown::html_document()</a></code> output format. The reason we need a separate chucnk option is because …</p>
 <ol style="list-style-type: decimal">
 <li><p>As explained above <code>knitr_print.widgetframe()</code> has no way of knowing what the output format is and what arguments were passed to it.</p></li>
-<li><p>Unlike <code>selfcontained</code> which defaults to <code>TRUE</code>, <code>widgetframe_self_contained</code> defaults to <code>FALSE</code>. That is to say that by default when using <code>widgetframe</code> the dependencies of the target <code>htmlwidgets</code> instance are kept in a separate directory.</p></li>
+<li><p>Unlike <code>self_contained</code> which defaults to <code>TRUE</code>, <code>widgetframe_self_contained</code> defaults to <code>FALSE</code>. That is to say that by default when using <code>widgetframe</code> the dependencies of the target <code>htmlwidgets</code> instance are kept in a separate directory.</p></li>
 </ol>
-<p>There is very little reason to set this option to <code>TRUE</code>. If however you do set it to <code>TRUE</code> the HTML file for the wrapped widget will have its dependencies inlined, resulting in a single large HTML file. Note that this is not the same as your final output HTML. This is just the HTML for the widget which is displayed inside an iframe in the final HTML document.</p>
+<p>There is very little reason to set this option to <code>TRUE</code>. If however you do set it to <code>TRUE</code> the HTML file for the wrapped widget will have its dependencies inlined, resulting in a single large HTML file. Note that this is not the same as your final output HTML. This is just the HTML for the widget which is displayed inside an iframe in the final HTML document. Wheter the final HTML document has inlined dependencies depends on the <code>self_contaied</code> argument of your output format e.g. <code><a href="http://www.rdocumentation.org/packages/rmarkdown/topics/html_document">rmarkdown::html_document()</a></code>.</p>
 </div>
 <div id="widgetframe_isolate_widgets" class="section level3">
 <h3 class="hasAnchor">
 <a href="#widgetframe_isolate_widgets" class="anchor"></a>widgetframe_isolate_widgets</h3>
-<p>Defaults to <code>TRUE</code>, and when <code>TRUE</code>, isolates HTML dependencies (CSS/JS) of <code>htmlwidgets</code> of different types. This avoids compatibility issues when <code>htmlwidgets</code> of different types depend on the same dependency(ies) but on different versions. For example if you are using some <code>leaflet</code>, and some <code>DT</code> <code>htmlwdigets</code> in your document (doesn’t matter how many), then the dependencies of <code>leaflet</code> widgets will be stored separately from dependencies of <code>DT</code> widgets and any other widget other than <code>leaflet</code>. So <code>leaflet</code> can depend on version ‘X’ of <code>jQuery</code> and <code>DT</code> can depend on version ‘Y’ and both will work correctly. Do note that multiple widgets of the same type will share the same set of dependencies in order to avoid unnecessary duplication. There is very little reason to set this option to <code>FALSE</code>.</p>
+<p>Defaults to <code>TRUE</code>, and when <code>TRUE</code>, isolates HTML dependencies (CSS/JS) of <code>htmlwidgets</code> of different types. This avoids compatibility issues when <code>htmlwidgets</code> of different types depend on the same dependency(ies) but on different versions. For example if you are using some <code>leaflet</code>, and some <code>DT</code> <code>htmlwdigets</code> in your document (doesn’t matter how many), then the dependencies of <code>leaflet</code> widgets will be stored separately from dependencies of <code>DT</code> widgets and any other widget other than <code>leaflet</code>. So <code>leaflet</code> can depend on version ‘X’ of <code>jQuery</code> and <code>DT</code> can depend on version ‘Y’ and both will work correctly. Note that multiple widgets of the same type will share the same set of dependencies in order to avoid unnecessary duplication. There is very little reason to set this option to <code>FALSE</code>.</p>
 </div>
 <div id="widgetframe_widgets_dir" class="section level3">
 <h3 class="hasAnchor">
 <a href="#widgetframe_widgets_dir" class="anchor"></a>widgetframe_widgets_dir</h3>
 <p>This option, if provided, determines where the HTML code for the wrapped <code>htmlwidgets</code> instance is written. Before discussing more we should note that <code>knitr_print.htmlwidgets()</code> never actually creates any files/directories or touches the file-system in any way. It merely returns a R list which then used by the output format to embed the widget’s HTML (and dependencies) in the final document. However, <code>knitr_print.widgetframe()</code> does create HTML file/s and dependencies directories for the wrapped widget. It needs to, so that the final document can embed the widget’s HTML which is saved separately, inside an iframe. This may not be important to know from a user perspective but a must know, if you want to extend or contribute to <code>widgetframe</code>.</p>
 <p>For almost all output formats except <code>bookdown</code>, this option should not be set and it will default to <code>file.path(knitr::opts_chunk$get('fig.path'),'widgets')</code>. That is a <code>widgets</code> directory inside the directory <code>knitr::opts_chunk$get('fig.path')</code>. This is done this way because as noted <code>knitr_print</code> has no way of knowing the arguments of the output format including the final destination directory of the document. However it does have access to the <code>fig.path</code> knitr chunk option. Refer to <a href="https://github.com/yihui/knitr/issues/1390">this</a> Github issue for a discussion around this. See the <code>bookdown</code> section below for a use case where this value needs to be explicitly set.</p>
+<p>Another scenario where you may need to set this option is when your RMarkdown output format has <code>self_contained=TRUE</code> (Note: This is the <code>self_contained</code> argument of your HTML output format e.g. <code><a href="http://www.rdocumentation.org/packages/rmarkdown/topics/html_document">rmarkdown::html_document</a></code> and not the <code>widgetframe_self_contained</code> chunk argument described above).</p>
 </div>
 <div id="chunk-options-and-output" class="section level3">
 <h3 class="hasAnchor">
