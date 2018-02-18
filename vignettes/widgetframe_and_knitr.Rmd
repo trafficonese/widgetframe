@@ -13,15 +13,15 @@ vignette: >
 
 The [`knitr`](https://yihui.name/knitr/) package, along with the [`rmarkdown`](http://rmarkdown.rstudio.com/) package converts a R markdown (Rmd) document into a target document, which can be an HTML Document, a HTML Website, a Dashboard, or a PDF/Word Document etc.
 
-`widgetframe` is designed to be used in Rmd documents which will eventually be knitted to an HTML or a derived format. There is little or no benefit in using `widgetframe::frameWidget()` when the output format is not HTML based such as PDF, Microsoft Word etc. In fact `widgetframe` will most definitely not work for such output formats.
+`widgetframe` is designed to be used in Rmd documents which will eventually be knitted to an HTML or a derived format. There is little or no benefit in using `widgetframe::frameWidget()` when the output format is not HTML-based such as PDF, Microsoft Word etc. In fact, `widgetframe` will most definitely not work for such output formats.
 
 ## Regular `htmlwidgets` and `knitr`
 
-By default when knitting `htmlwidgets` the `htmlwidgets:::knit_print.htmlwidgets()` function (an internal function exposed as an S3 method) is called. The output of this call is a `list` containing the HTML code + a list of HTML dependencies (JS/CSS) required to render the widget. How this is then inserted into the final document depends on the output format. For this discussion we are going to limit to HTML based output formats because as noted above `widgetframe` is designed to work only for HTML based output formats.
+By default, when knitting `htmlwidgets` the `htmlwidgets:::knit_print.htmlwidgets()` function (an internal function exposed as an S3 method) is called. The output of this call is a `list` containing the HTML code + a list of HTML dependencies (JS/CSS) required to render the widget. How this is then inserted into the final document depends on the output format. For this discussion we are going to limit to HTML based output formats because as noted above `widgetframe` is designed to work only for HTML based output formats.
 
-Let's start with the simplest of HTML output format `rmarkdown::html_document()`.
+Let's start with the simplest of HTML output format, `rmarkdown::html_document()`.
 The `self_contained` (default = `TRUE`), and the `lib_dir` (default = name of document + `_files`)
-arguments of this output format dictate how `htmlwidgets` instances appear in the final document. If `self_contained` is `TRUE` then the HTML dependencies (JS/CSS) are all inlined and the result is just one single HTML document. Naturally this document is quite large in size due to the dependencies being inlined. If `self_contained` is `FALSE` then the HTML dependencies are kept in a separate directory determined by the `lib_dir` argument. Other HTML based formats like `bookdown`, `flexdashboard` etc. too have similar arguments. This is not surprising as they tend to extend `rmarkdown::html_document`.
+arguments of this output format dictate how `htmlwidgets` instances appear in the final document. If `self_contained` is `TRUE` then the HTML dependencies (JS/CSS) are all inlined and the result is just one single HTML document. Naturally this document is quite large in size due to the dependencies being inlined. If `self_contained` is `FALSE` then the HTML dependencies are kept in a separate directory determined by the `lib_dir` argument. Other HTML based formats like `bookdown`, `flexdashboard` etc. have similar arguments. This is not surprising as they tend to extend `rmarkdown::html_document`.
 
 ### Potential Issues
 
@@ -29,14 +29,14 @@ Unless you are working on small one-off Rmd document, it is never a good idea to
 
 Even if you were to externalize the dependencies by setting `sefl_contained=FALSE`, there are still two potential issues...
 
-* Different `htmlwidgets` may depend on different versions of the same Javascript/CSS dependency. But when the final document is produced only a single version of the said dependency is used. This may cause certain widgets to not display, or work incorrectly.
+* Different `htmlwidgets` may depend on different versions of the same Javascript/CSS dependency. But when the final document is produced, only a single version of the said dependency is used. This may cause certain widgets to not display, or work incorrectly.
 * The styling rules (CSS) of the widget may be overridden by those of the output format. This will again result in the widget not displaying properly in the final document.
 
 These problems typically don't occur when knitting one-off HTML documents using the `rmarkdown::html_document` format. But they do occur once you start outputting documents in the `bookdown`, `blogdown`, `rmarkdown` websites, `xaringan` and other HTML based output formats. And this is where `widgetframe` comes in.
 
 ## `widgetframe`
 
-`widgetframe` is itself a `htmlwidgets` instance, but of a different kind. Instead of wrapping a Javascript based dataviz object, it wraps another `htmlwidgets` instance like `leaflet`, or `DT`, or `dygraphs` etc. It does so by embedding the target `htmlwidgets` instance in a HTML [iframe](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe). It also uses NPR's [pym.js](http://blog.apps.npr.org/pym.js/) Javascript library to make the iframes [responsive](https://en.wikipedia.org/wiki/Responsive_web_design). This allows you to easily embed `htmlwidgets` inside complex HTML documents and avoid the issues mentioned in the section above.
+`widgetframe` is itself a `htmlwidgets` instance, but of a different kind. Instead of wrapping a Javascript based dataviz object, it wraps another `htmlwidgets` instance like `leaflet`, or `DT`, or `dygraphs` etc. It does so by embedding the target `htmlwidgets` instance in an HTML [iframe](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe). It also uses NPR's [pym.js](http://blog.apps.npr.org/pym.js/) Javascript library to make the iframes [responsive](https://en.wikipedia.org/wiki/Responsive_web_design). This allows you to easily embed `htmlwidgets` inside complex HTML documents and avoid the issues mentioned in the section above.
 
 ## `widgetframe` and `knitr`
 
@@ -48,10 +48,10 @@ To understand how the knitting of `widgetframe`s differ from regular `htmlwidget
 
 # widgetframe supports 3 custom knitr chunk options...
 
-# For all practicle purposes this should always be FALSE 
+# For all practical purposes, this should always be FALSE 
 knitr::opts_chunk$set(widgetframe_self_contained = FALSE) # default = FALSE
 
-# For all practicle purposes this should always be TRUE 
+# For all practical purposes, this should always be TRUE 
 knitr::opts_chunk$set(widgetframe_isolate_widgets = TRUE) # default = TRUE
 
 # Only needed in bookdown format/s such as bookdown::gitbook. Otherwise don't set.
@@ -72,12 +72,12 @@ While using `wigdetframe` is as simple as `widgetframe::frameWidget(some_other_w
 
 This option is similar to the `self_contained` argument of the `rmarkdown::html_document()` output format. The reason we need a separate chucnk option is because ...
 
-1.  As explained above `knitr_print.widgetframe()` has no way of knowing what the output format is and what arguments were passed to it. 
+1.  As explained above, `knitr_print.widgetframe()` has no way of knowing what the output format is and what arguments were passed to it. 
 
-2.  Unlike `self_contained` which defaults to `TRUE`, `widgetframe_self_contained` defaults to `FALSE`. That is to say that by default when using `widgetframe` the dependencies of the target `htmlwidgets` instance are kept in a separate directory.
+2.  Unlike `self_contained`, which defaults to `TRUE`, `widgetframe_self_contained` defaults to `FALSE`. That is to say that by default when using `widgetframe` the dependencies of the target `htmlwidgets` instance are kept in a separate directory.
 
-There is very little reason to set this option to `TRUE`. If however you do set it to `TRUE` the HTML file for the wrapped widget will have its dependencies inlined, resulting in a single large HTML file. Note that this is not the same as your final output HTML. This is just the HTML for the widget which is displayed inside an iframe in the final HTML document.
-Wheter the final HTML document has inlined dependencies depends on the `self_contaied` argument of your output format e.g. `rmarkdown::html_document()`.
+There is very little reason to set this option to `TRUE`. If however you do set it to `TRUE`, the HTML file for the wrapped widget will have its dependencies inlined, resulting in a single large HTML file. Note that this is not the same as your final output HTML. This is just the HTML for the widget which is displayed inside an iframe in the final HTML document.
+Whether the final HTML document has inlined dependencies depends on the `self_contained` argument of your output format e.g. `rmarkdown::html_document()`.
 
 ### widgetframe_isolate_widgets
 
@@ -86,7 +86,7 @@ There is very little reason to set this option to `FALSE`.
 
 ### widgetframe_widgets_dir
 
-This option, if provided, determines where the HTML code for the wrapped `htmlwidgets` instance is written. Before discussing more we should note that `knitr_print.htmlwidgets()` never actually creates any files/directories or touches the file-system in any way. It merely returns a R list which then used by the output format to embed the widget's HTML (and dependencies) in the final document. However, `knitr_print.widgetframe()` does create HTML file/s and dependencies directories for the wrapped widget. It needs to, so that the final document can embed the widget's HTML which is saved separately, inside an iframe. This may not be important to know from a user perspective but a must know, if you want to extend or contribute to `widgetframe`.
+This option, if provided, determines where the HTML code for the wrapped `htmlwidgets` instance is written. Before discussing more we should note that `knitr_print.htmlwidgets()` never actually creates any files/directories or touches the file-system in any way. It merely returns an R list which is then used by the output format to embed the widget's HTML (and dependencies) in the final document. However, `knitr_print.widgetframe()` does create HTML file/s and dependencies directories for the wrapped widget. It needs to, so that the final document can embed the widget's HTML which is saved separately, inside an iframe. This may not be important to know from a user perspective but a must know if you want to extend or contribute to `widgetframe`.
 
 For almost all output formats except `bookdown`, this option should not be set and it will default to `file.path(knitr::opts_chunk$get('fig.path'),'widgets')`. That is a `widgets` directory inside the directory `knitr::opts_chunk$get('fig.path')`. This is done this way because as noted `knitr_print` has no way of knowing the arguments of the output format including the final destination directory of the document. However it does have access to the `fig.path` knitr chunk option. Refer to [this](https://github.com/yihui/knitr/issues/1390) Github issue for a discussion around this.  See the `bookdown` section below for a use case where this value needs to be explicitly set.
 
@@ -137,7 +137,7 @@ I've ommitted the `widgetframe_` prefix for each of the 3 options below to conse
 
 †: Default Value.
 
-By default the widget HTML + dependencies (JS/CSS files) are located inside `widgets` directory, which is created inside wherever `knitr::opts_chunk$get('fig.path')` points too. However if `widgetframe_widgets_dir` is set then the widget HTML + dependencies are placed inside a directory whose name is the value of this option, and the path is resolved relative to the current working directory (`getwd()`) while knitting.
+By default, the widget HTML + dependencies (JS/CSS files) are located inside `widgets` directory, which is created inside wherever `knitr::opts_chunk$get('fig.path')` points too. However if `widgetframe_widgets_dir` is set then the widget HTML + dependencies are placed inside a directory whose name is the value of this option, and the path is resolved relative to the current working directory (`getwd()`) while knitting.
 
 ## `widgetframe` and `bookdown`
 
