@@ -78,7 +78,7 @@ frameOptions <- function(xdomain = '*', title=NULL, name=NULL,
 #' @export
 frameableWidget <- function(widget, renderCallback = NULL) {
   if (!("htmlwidget" %in% class(widget))) {
-    stop ("The input widget argument is not a htmldidget.")
+    stop ("The input widget argument is not a htmlwidget.")
   }
   if ("widgetframe" %in% class(widget)) {
     stop ("Can't make an already framed widget frameable.")
